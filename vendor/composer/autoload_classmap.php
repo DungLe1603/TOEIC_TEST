@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\Admin\\UserController' => $baseDir . '/app/Http/Controllers/Admin/UserController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -721,6 +722,7 @@ return array(
     'Illuminate\\Auth\\Events\\Lockout' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Events/Lockout.php',
     'Illuminate\\Auth\\Events\\Login' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Events/Login.php',
     'Illuminate\\Auth\\Events\\Logout' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Events/Logout.php',
+    'Illuminate\\Auth\\Events\\OtherDeviceLogout' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Events/OtherDeviceLogout.php',
     'Illuminate\\Auth\\Events\\PasswordReset' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Events/PasswordReset.php',
     'Illuminate\\Auth\\Events\\Registered' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Events/Registered.php',
     'Illuminate\\Auth\\Events\\Verified' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Events/Verified.php',
