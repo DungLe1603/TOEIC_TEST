@@ -25,4 +25,29 @@ class User extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    /**
+     * Get the avatar.
+     *
+     * @param string $imageName imageName
+     *
+     * @return string
+     */
+    public function getAvatarAttribute($imageName)
+    {
+        if (empty($imageName)) {
+            return config('define.path.default_avatar');
+        }
+        return '/upload/'.$imageName;
+    }
+
+    /**
+     * User belong to Role
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
 }

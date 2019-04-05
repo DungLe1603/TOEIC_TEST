@@ -17,15 +17,18 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu" style="width: 280px;">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="Avatar" class="user-image" alt="User Image">
-                        <span class="hidden-xs">Username</span>
+                        {{-- <img src="{{ Auth::user()->avatar }}" class="user-image" alt="User Image"> --}}
+                        <img src="{{ asset('admin/images/default_avatar.png') }}" class="user-image" alt="User Image">
+                        <span class="hidden-xs">{{ Auth::user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="" class="img-circle" alt="User Image">
+                            {{-- <img src="{{ Auth::user()->profile->avatar }}" class="img-circle" alt="User Image"> --}}
+                            <img src="{{ asset('admin/images/default_avatar.png') }}" class="img-circle" alt="User Image">
                             <p>
-                                User name
+                                {{ Auth::user()->name }}
+                                <small>{{ Auth::user()->created_at->format('d-m-Y') }}</small>
                             </p>
                         </li>
                         <!-- Menu Footer-->
@@ -36,7 +39,7 @@
                         <div class="pull-right">
                             <a href="#" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">@lang('admin.header.logout')</a>
-                            <form id="logout-form" action="#" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('logout') }}" style="display: none;">
                                 @csrf
                             </form>
                         </div>

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Requests\LoginRequest;
+use App\Services\LoginService;
 
 class LoginController extends Controller
 {
@@ -25,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/user';
 
     /**
      * Create a new controller instance.
@@ -35,5 +38,43 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+
+    /**
+     * Handle login process.
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleLogin(LoginRequest $request)
+    {
+        // dd($request->all());
+        $data = $request->except(['_token']);
+        if (app(LoginService::class)->login($data)) {
+            return redirect()->route('user.index');
+        }
+        return redirect()->route('login');
+    }
+
+    /**
+     * Handle logout process.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function logout()
+    {
+        \Auth::logout();
+        return redirect()->route('login');
     }
 }
