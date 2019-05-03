@@ -18,4 +18,6 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@handleLogin')->name('login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::resource('user', 'Admin\UserController');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Admin', 'as' => 'admin.'], function () {
+    Route::resource('users', 'UserController');
+});

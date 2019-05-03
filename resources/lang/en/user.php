@@ -28,9 +28,9 @@ return [
         'restore' => 'Restore',
     ],
     'gender' => [
-        'other' => 'OTher',
-        'male' => 'Female',
-        'female' => 'male'
+        'other' => 'Other',
+        'male' => 'Male',
+        'female' => 'Female'
     ],
     'placeholder' => [
         'search' => 'Search',
@@ -61,4 +61,5 @@ return [
     'sent_email' => 'Reset password link was sent to your email!',
     'check_error' => 'There are some error, please check again!',
     'expired_request' => 'Your change password request is exprired!',
+    'edit_error' => 'You can not edit this user!',
 ];

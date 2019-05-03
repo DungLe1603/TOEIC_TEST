@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\User;
-use App\Models\Profile;
 use App\Models\Role;
 use Illuminate\Support\Facades\Storage;
 use File;
@@ -20,7 +19,7 @@ class UserService
      */
     public function getUserWithPaginate()
     {
-        return User::with(['role', 'profile'])->paginate(config('define.paginate.limit_rows'));
+        return User::with(['role'])->paginate(config('define.number_element_in_table'));
     }
 
     /**
@@ -83,15 +82,11 @@ class UserService
             $user = User::create([
                 'role_id' => $data['role_id'],
                 'email' => $data['email'],
-                'password' => bcrypt($data['password']),
-            ]);
-            Profile::create([
-                'user_id' => $user['id'],
                 'name' => $data['name'],
-                'gender' => $data['gender'],
-                'address' => $data['address'],
-                'phonenumber' => $data['phonenumber'],
+                'password' => bcrypt($data['password']),
                 'avatar' => isset($data['avatar']) ? $this->uploadAvatar($data['avatar']) : null,
+                'gender' => $data['gender'],
+                'birthday' => $data['birthday'],
             ]);
             DB::commit();
             return $user;
@@ -125,27 +120,23 @@ class UserService
      */
     public function update(array $data, User $user)
     {
+        // dd($data);
         DB::beginTransaction();
         try {
-            if ($user->role_id == Role::ADMIN_ROLE && ($data['role_id'] != Role::ADMIN_ROLE || Auth::user()->id != $user->id)) {
-                return false;
-            }
-            if (isset($data['password']) && $data['password']) {
-                $inputUser['password'] = bcrypt($data['password']);
-            }
-            $inputUser['role_id'] = $data['role_id'];
-            $inputProfile = [
-                'user_id' => $user->id,
+            // if ($user->role_id == Role::ADMIN_ROLE && ($data['role_id'] != Role::ADMIN_ROLE || Auth::user()->id != $user->id)) {
+            //     session()->flash('error', trans('user.edit_error'));
+            //     return false;
+            // }
+            $inputUser = [
                 'name' => $data['name'],
                 'gender' => $data['gender'],
-                'address' => $data['address'],
-                'phonenumber' => $data['phonenumber'],
+                // 'role_id' => $data['role_id'],
+                'birthday' => $data['birthday'],
             ];
             if (isset($data['avatar'])) {
-                $inputProfile['avatar'] = $this->uploadAvatar($data['avatar']);
-                File::delete(public_path($user->profile->avatar));
+                $inputUser['avatar'] = $this->uploadAvatar($data['avatar']);
+                File::delete(public_path($user->avatar));
             }
-            $user->profile->update($inputProfile);
             $user->update($inputUser);
             DB::commit();
             return $user;
@@ -256,29 +247,5 @@ class UserService
             Log::error($e);
             DB::rollback();
         }
-    }
-    
-    /**
-     * Handle process login
-     *
-     * @param array $data data
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function login(array $data)
-    {
-        $user = User::where('email', $data['email'])->first();
-        if (!$user) {
-            session()->flash('error', trans('login.invalid_account'));
-            return false;
-        }
-        if (!(\Hash::check($data['password'], $user->password))) {
-            session()->flash('error', trans('login.incorrect_password'));
-            return false;
-        }
-        if (\Auth::attempt($data)) {
-            return true;
-        }
-        return false;
     }
 }

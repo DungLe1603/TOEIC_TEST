@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
+    const ADMIN_ROLE = 1;
+    const CUSTOMER_ROLE = 2;
     /**
      * Role has many users
      *

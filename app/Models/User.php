@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
+    const MALE = 0;
+    const FEMALE = 1;
+    const OTHER = 2;
     // use Notifiable;
 
     /**
@@ -14,7 +17,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'gender', 'password',
+        'name', 'email', 'gender', 'password', 'birthday'
     ];
 
     /**
@@ -25,21 +28,6 @@ class User extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
-    /**
-     * Get the avatar.
-     *
-     * @param string $imageName imageName
-     *
-     * @return string
-     */
-    public function getAvatarAttribute($imageName)
-    {
-        if (empty($imageName)) {
-            return config('define.path.default_avatar');
-        }
-        return '/upload/'.$imageName;
-    }
 
     /**
      * User belong to Role
@@ -50,4 +38,19 @@ class User extends Model
     {
         return $this->belongsTo(Role::class, 'role_id');
     }
+    
+    /**
+     * Get the avatar.
+     *
+     * @param string $imageName imageName
+     *
+     * @return string
+     */
+    // public function getAvatarAttribute($imageName)
+    // {
+    //     if (empty($imageName)) {
+    //         return config('define.path.default_avatar');
+    //     }
+    //     return '/upload/'.$imageName;
+    // }
 }

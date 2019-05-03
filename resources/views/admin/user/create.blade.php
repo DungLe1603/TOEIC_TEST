@@ -29,20 +29,6 @@
                   @endif
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">@lang('user.table.password') *</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-                  @if ($errors->has('password'))
-                    <span class="help-block">{{ $errors->first('password') }}</span>
-                  @endif
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputConfirmPassword1">@lang('user.table.confirm_password') *</label>
-                  <input type="password" name="confirm_password" class="form-control" id="exampleInputConfirmPassword1">
-                  @if ($errors->has('confirm_password'))
-                    <span class="help-block">{{ $errors->first('confirm_password') }}</span>
-                  @endif
-                </div>
-                <div class="form-group">
                   <label for="exampleInputName">@lang('user.table.name') *</label>
                   <input type="text" name="name" class="form-control" id="exampleInputName" value="{{ old('name') }}">
                   @if ($errors->has('name'))
@@ -50,29 +36,22 @@
                   @endif
                 </div>
                 <div class="form-group">
+                  <label for="birthday">@lang('user.table.birthday')</label>
+                  <input type="date" name="birthday" class="form-control" id="birthday" value="{{ old('birthday') }}">
+                  @if ($errors->has('birthday'))
+                    <span class="help-block">{{ $errors->first('birthday') }}</span>
+                  @endif
+                </div>
+                <div class="form-group">
                   <label for="exampleInputGender">@lang('user.table.gender')</label>
                   <select name="gender" class="form-control" id="exampleInputGender">
-                    <option value="">@lang('user.select')</option>
-                    <option {{ old('gender') == \App\Models\Profile::OTHER ? 'selected' : '' }} value="{{ \App\Models\Profile::OTHER }}">@lang('user.gender.other')</option>
-                    <option {{ old('gender') == \App\Models\Profile::MALE ? 'selected' : '' }} value="{{ \App\Models\Profile::MALE }}">@lang('user.gender.male')</option>
-                    <option {{ old('gender') == \App\Models\Profile::FEMALE ? 'selected' : '' }} value="{{ \App\Models\Profile::FEMALE }}">@lang('user.gender.female')</option>
+                    {{-- <option value="">@lang('user.select')</option> --}}
+                    {{-- <option {{ old('gender') == \App\Models\Profile::OTHER ? 'selected' : '' }} value="{{ \App\Models\Profile::OTHER }}">@lang('user.gender.other')</option> --}}
+                    <option {{ old('gender') == \App\Models\USER::MALE ? 'selected' : '' }} value="{{ \App\Models\USER::MALE }}">@lang('user.gender.male')</option>
+                    <option {{ old('gender') == \App\Models\USER::FEMALE ? 'selected' : '' }} value="{{ \App\Models\USER::FEMALE }}">@lang('user.gender.female')</option>
                   </select>
                   @if ($errors->has('gender'))
                     <span class="help-block">{{ $errors->first('gender') }}</span>
-                  @endif
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPhoneNumber">@lang('user.table.phone')</label>
-                  <input type="text" name="phonenumber" class="form-control" id="exampleInputPhoneNumber" value="{{ old('phonenumber') }}">
-                  @if ($errors->has('phonenumber'))
-                    <span class="help-block">{{ $errors->first('phonenumber') }}</span>
-                  @endif
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputAddress">@lang('user.table.address')</label>
-                  <input type="text" name="address" class="form-control" id="exampleInputAddress" value="{{ old('address') }}">
-                  @if ($errors->has('address'))
-                    <span class="help-block">{{ $errors->first('address') }}</span>
                   @endif
                 </div>
                 <div class="form-group">
@@ -87,7 +66,7 @@
                 <div class="form-group">
                   <label for="exampleInputRole">@lang('user.table.role') *</label>
                   <select name="role_id" class="form-control" id="exampleInputRole">
-                      <option value="">@lang('user.select')</option>
+                      {{-- <option value="">@lang('user.select')</option> --}}
                     @foreach ($roles as $role)
                       <option {{ old('role_id') == $role->id ? 'selected' : '' }} value="{{ $role->id }}">{{ $role->name }}</option>
                     @endforeach
