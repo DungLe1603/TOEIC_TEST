@@ -61,7 +61,7 @@ class LoginController extends Controller
     {
         $data = $request->except(['_token']);
         if (app(LoginService::class)->login($data)) {
-            return redirect()->route('admin.user.index');
+            return redirect()->route('admin.users.index');
         }
         return redirect()->route('login');
     }

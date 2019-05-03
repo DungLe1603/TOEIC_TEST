@@ -17,7 +17,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'gender', 'password', 'birthday'
+        'name', 'email', 'gender', 'password', 'birthday', 'avatar'
     ];
 
     /**
@@ -46,11 +46,11 @@ class User extends Model
      *
      * @return string
      */
-    // public function getAvatarAttribute($imageName)
-    // {
-    //     if (empty($imageName)) {
-    //         return config('define.path.default_avatar');
-    //     }
-    //     return '/upload/'.$imageName;
-    // }
+    public function getAvatarAttribute($imageName)
+    {
+        if (empty($imageName)) {
+            return config('define.path.default_avatar');
+        }
+        return asset('/upload/' . $value);
+    }
 }
