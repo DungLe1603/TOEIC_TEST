@@ -51,6 +51,6 @@ class User extends Model
         if (empty($imageName)) {
             return config('define.path.default_avatar');
         }
-        return asset('/upload/' . $value);
+        return asset('upload/' . $imageName);
     }
 }
