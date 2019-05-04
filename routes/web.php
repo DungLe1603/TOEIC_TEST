@@ -20,4 +20,5 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Admin', 'as' => 'admin.'], function () {
     Route::resource('users', 'UserController');
+    Route::resource('parts', 'PartController');
 });
