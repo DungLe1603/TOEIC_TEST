@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Part;
-// use App\Services\PartService;
+use App\Services\PartService;
 // use App\Http\Requests\Admin\PostPartRequest;
 // use App\Http\Requests\Admin\PutPartRequest;
 
@@ -20,10 +20,10 @@ class PartController extends Controller
     *
     * @return void
     */
-    // public function __construct(PartService $partService)
-    // {
-    //     $this->partService = $partService;
-    // }
+    public function __construct(PartService $partService)
+    {
+        $this->partService = $partService;
+    }
 
     /**
      * Display a listing of the resource.
@@ -32,7 +32,7 @@ class PartController extends Controller
      */
     public function index()
     {
-        $parts = Part::all();
+        $parts = $this->partService->getParts();
         return view('admin.part.list', compact('parts'));
     }
 
@@ -43,7 +43,7 @@ class PartController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.part.create');
     }
 
     /**
@@ -54,7 +54,12 @@ class PartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        dd($data);
+        if (!empty($this->partService->store($data))) {
+            return redirect()->route('admin.parts.index')->with('success', trans('common.message.create_success'));
+        }
+        return redirect()->route('admin.parts.create')->with('error', trans('common.message.create_error'));
     }
 
     /**
