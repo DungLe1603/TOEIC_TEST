@@ -120,7 +120,7 @@ class UserService
      */
     public function update(array $data, User $user)
     {
-        // dd($data);
+        // dd($data['role_id']);
         DB::beginTransaction();
         try {
             // if ($user->role_id == Role::ADMIN_ROLE && ($data['role_id'] != Role::ADMIN_ROLE || Auth::user()->id != $user->id)) {
@@ -130,13 +130,14 @@ class UserService
             $inputUser = [
                 'name' => $data['name'],
                 'gender' => $data['gender'],
-                // 'role_id' => $data['role_id'],
+                'role_id' => $data['role_id'],
                 'birthday' => $data['birthday'],
             ];
             if (isset($data['avatar'])) {
                 $inputUser['avatar'] = $this->uploadAvatar($data['avatar']);
                 File::delete(public_path($user->avatar));
             }
+            // dd($inputUser['role_id']);
             $user->update($inputUser);
             DB::commit();
             return $user;

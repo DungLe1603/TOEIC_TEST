@@ -17,7 +17,7 @@
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">@lang('user.add.title')</h3>
-            </div>                        
+            </div>
             <form method="POST" role="form" enctype="multipart/form-data" action="{{ route('admin.users.store') }}">
               @csrf
               <div class="box-body row">
@@ -85,7 +85,7 @@
                 <div class="col-md-6 padding-20">
                   <div class="form-group padding-20">
                     <label for="avatar">@lang('user.table.avatar')</label>
-                    <img id="blah" class="avatar" src="{{ asset('admin/images/default_avatar.png') }}" alt="your image" />
+                    <img id="blah" class="avatar" src="{{ asset('admin/images/default_avatar.png') }}" alt="User avatar" />
                     <input type='file' id="imgInp" name="avatar" accept="image/gif, image/jpg, image/jpeg, image/png" />
                     @if ($errors->has('avatar'))
                       <span class="help-block">{{ $errors->first('avatar') }}</span>
