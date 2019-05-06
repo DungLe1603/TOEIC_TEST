@@ -24,7 +24,7 @@
                   <th>@lang('comment.table.user')</th>
                   <th>@lang('comment.table.parent_id')</th>
                   <th>@lang('comment.table.content')</th>
-                  <th>@lang('comment.table.action')</th>
+                  <th>@lang('comment.table.status')</th>
                 </tr>
                 @foreach ($comments as $comment)
                   <tr>
@@ -38,9 +38,9 @@
                         @csrf
                         @method('DELETE')
                         @if($comment->status === 0)
-                          <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('@lang('common.message.confirm_block')')">@lang('common.block')</button>
+                          <button type="submit" class="btn btn-info btn-xs" onclick="return confirm('@lang('common.message.block_question')')">@lang('common.active')</button>
                         @else
-                          <button type="submit" class="btn btn-info btn-xs" onclick="return confirm('@lang('common.message.confirm_unblock')')">@lang('common.unblock')</button>
+                          <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('@lang('common.message.unblock_question')')">@lang('common.block')</button>
                         @endif
                       </form>
                     </td>

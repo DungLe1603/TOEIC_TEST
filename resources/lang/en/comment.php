@@ -11,7 +11,7 @@ return [
         'user' => 'User name',
         'test' => 'Test',
         'content' => 'Content',
-        'status' => 'status',
+        'status' => 'Status',
         'action' => 'Action',
         'parent_id' => 'Parent Id',
     ],

@@ -12,6 +12,7 @@ return [
     'sample' => 'Sample file',
     'block' => 'Block',
     'unblock' => 'Unblock',
+    'active' => 'Active',
     'table' => [
         'num' => 'No. ',
         'action' => 'ACtion',
@@ -25,6 +26,7 @@ return [
         'delete_success' => 'Delete successfully',
         'delete_error' => 'Delete fail',
         'block_question' => 'Do you want to block?',
+        'unblock_question' => 'Do you want to unblock?',
         'upload_success' => 'Add file successfully!',
         'request_upload' => 'please select csv file!',
         'file_error' => 'Data is incorrect at :line, please check again!',
