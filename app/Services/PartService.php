@@ -72,16 +72,14 @@ class PartService
     /**
      * Remove the specified resource from storage.
      *
-     * @param App\Models\Part $Part Part
+     * @param App\Models\Part $part part
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($Part)
+    public function destroy(Part $part)
     {
         try {
-            if ($Part->role_id != Role::ADMIN_ROLE) {
-                return $Part->delete();
-            }
+            return $part->delete();
         } catch (Exception $e) {
             Log::error($e);
         }

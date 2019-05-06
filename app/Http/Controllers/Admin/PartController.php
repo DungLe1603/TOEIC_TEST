@@ -87,7 +87,8 @@ class PartController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  App\Models\Part  $id
+     * 
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,Part $part)
@@ -102,11 +103,15 @@ class PartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  App\Models\Part  $part part
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Part $part)
     {
-        //
+        if ($this->partService->destroy($part)) {
+            return redirect()->route('admin.parts.index')->with('success', trans('common.message.delete_success'));
+        }
+        return redirect()->route('admin.parts.index')->with('error', trans('common.message.delete_error'));
     }
 }

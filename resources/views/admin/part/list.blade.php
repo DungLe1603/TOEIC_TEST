@@ -50,9 +50,6 @@
               </table>
             </div>
             <div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-                  {{-- {{ $parts->links() }} --}}
-              </ul>
             </div>
           </div>
         </div>
