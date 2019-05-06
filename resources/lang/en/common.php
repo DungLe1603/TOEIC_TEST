@@ -11,6 +11,7 @@ return [
     'upload' => 'Upload',
     'sample' => 'Sample file',
     'block' => 'Block',
+    'unblock' => 'Unblock',
     'table' => [
         'num' => 'No. ',
         'action' => 'ACtion',

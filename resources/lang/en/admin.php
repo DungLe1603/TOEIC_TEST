@@ -38,8 +38,8 @@ return [
             'title' => 'Statistical report',
         ],
         'comment' => [
-            'title' => 'Quản lý bình luận',
-            'list' => 'Danh sách bình luận',
+            'title' => 'Comment management',
+            'list' => 'Comments list',
         ],
     ],
     'header' => [
