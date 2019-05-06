@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Part;
 use App\Services\PartService;
-// use App\Http\Requests\Admin\PostPartRequest;
-// use App\Http\Requests\Admin\PutPartRequest;
+use App\Http\Requests\Admin\PostPartRequest;
+use App\Http\Requests\Admin\PutPartRequest;
 
 class PartController extends Controller
 {
@@ -52,7 +52,7 @@ class PartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostPartRequest $request)
     {
         $data = $request->all();
         if (!empty($this->partService->store($data))) {
@@ -86,12 +86,12 @@ class PartController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  App\Models\Part  $id
+     * @param  App\Http\Requests\PutPartRequest $request request
+     * @param  App\Models\Part                  $part    part
      * 
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Part $part)
+    public function update(PutPartRequest $request,Part $part)
     {
         $data = $request->all();
         if (!empty($this->partService->update($data, $part))) {
@@ -103,7 +103,7 @@ class PartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  App\Models\Part  $part part
+     * @param App\Models\Part $part part
      *
      * @return \Illuminate\Http\Response
      */
