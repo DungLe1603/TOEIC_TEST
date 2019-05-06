@@ -55,7 +55,6 @@ class PartController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        dd($data);
         if (!empty($this->partService->store($data))) {
             return redirect()->route('admin.parts.index')->with('success', trans('common.message.create_success'));
         }
@@ -76,12 +75,12 @@ class PartController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Part  $part part
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Part $part)
     {
-        //
+        return view('admin.part.edit', compact('part'));
     }
 
     /**
@@ -91,9 +90,13 @@ class PartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Part $part)
     {
-        //
+        $data = $request->all();
+        if (!empty($this->partService->update($data, $part))) {
+            return redirect()->route('admin.parts.index')->with('success', trans('common.message.edit_success'));
+        }
+        return redirect()->route('admin.parts.edit', $part->id)->with('error', trans('common.message.edit_error'));
     }
 
     /**
