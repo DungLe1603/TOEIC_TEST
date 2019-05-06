@@ -16,7 +16,7 @@ class PartController extends Controller
     /**
     * Contructer
     *
-    * @param App\Service\UserService $userService userService
+    * @param App\Service\PartService $partService partService
     *
     * @return void
     */
