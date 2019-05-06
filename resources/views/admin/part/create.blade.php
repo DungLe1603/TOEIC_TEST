@@ -46,7 +46,7 @@
                   
                   <div class="form-group">
                     <label for="description">@lang('part.table.description') *</label>
-                    <textarea rows="6" name="description" class="form-control" id="description">{{ old('description') }}</textarea>
+                    <textarea rows="5" name="description" class="form-control" id="description">{{ old('description') }}</textarea>
                     @if ($errors->has('description'))
                       <span class="help-block">{{ $errors->first('description') }}</span>
                     @endif
