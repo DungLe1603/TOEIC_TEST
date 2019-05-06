@@ -13,6 +13,10 @@ return [
         'description' => 'Description',
         'action' => 'Action'
     ],
+    'section' => [
+        'listening' => 'Listening',
+        'reading' => 'Reading',
+    ],
     'placeholder' => [
         'search' => 'Search',
     ],
