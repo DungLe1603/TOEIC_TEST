@@ -9,11 +9,11 @@ return [
     'table' => [
         'id' => 'Id',
         'name' => 'Name',
-        'section' => 'Section',
+        'skill' => 'Skill',
         'description' => 'Description',
         'action' => 'Action'
     ],
-    'section' => [
+    'skill' => [
         'listening' => 'Listening',
         'reading' => 'Reading',
     ],

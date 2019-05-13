@@ -30,15 +30,14 @@
                     @endif
                   </div>
                   <div class="form-group">
-                    <label for="section">@lang('part.table.section') *</label>
-                    <select name="section" class="form-control" id="section">
-                      {{-- <option value="">@lang('part.select')</option> --}}
-                      {{-- <option {{ old('section') == \App\Models\Profile::OTHER ? 'selected' : '' }} value="{{ \App\Models\Profile::OTHER }}">@lang('part.section.other')</option> --}}
-                      <option {{ old('section') == \App\Models\part::Listening ? 'selected' : '' }} value="{{ \App\Models\part::Listening }}">@lang('part.section.listening')</option>
-                      <option {{ old('section') == \App\Models\part::Reading ? 'selected' : '' }} value="{{ \App\Models\part::Reading }}">@lang('part.section.reading')</option>
+                    <label for="skill_id">@lang('part.table.skill') *</label>
+                    <select name="skill_id" class="form-control" id="skill_id">
+                      @foreach ($skills as $item)
+                        <option {{ old('skill_id') == $item->id ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }}</option>
+                      @endforeach
                     </select>
-                    @if ($errors->has('section'))
-                      <span class="help-block">{{ $errors->first('section') }}</span>
+                    @if ($errors->has('skill_id'))
+                      <span class="help-block">{{ $errors->first('skill_id') }}</span>
                     @endif
                   </div>
                 </div>

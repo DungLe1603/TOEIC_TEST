@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Part;
+use App\Models\Skill;
 use App\Services\PartService;
 use App\Http\Requests\Admin\PostPartRequest;
 use App\Http\Requests\Admin\PutPartRequest;
@@ -43,7 +44,8 @@ class PartController extends Controller
      */
     public function create()
     {
-        return view('admin.part.create');
+        $skills = Skill::all();
+        return view('admin.part.create', compact('skills'));
     }
 
     /**
@@ -80,7 +82,8 @@ class PartController extends Controller
      */
     public function edit(Part $part)
     {
-        return view('admin.part.edit', compact('part'));
+        $skills = Skill::all();
+        return view('admin.part.edit', compact('skills', 'part'));
     }
 
     /**

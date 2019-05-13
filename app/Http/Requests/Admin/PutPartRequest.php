@@ -27,7 +27,7 @@ class PutPartRequest extends FormRequest
         $id = $this->part->id;
         return [
             'name' => 'required|unique:parts,name,' . $id,
-            'section' => 'in:'.Part::Listening.','.Part::Reading.'',
+            'skill_id' => 'required|exists:skills,id'
         ];
     }
 }

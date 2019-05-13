@@ -32,7 +32,7 @@ class PartService
         try {
             $Part = Part::create([
                 'name' => $data['name'],
-                'section' => $data['section'],
+                'skill_id' => $data['skill_id'],
                 'description' => $data['description'],                
             ]);
             DB::commit();
@@ -57,7 +57,7 @@ class PartService
         try {
             $inputPart = [
                 'name' => $data['name'],
-                'section' => $data['section'],
+                'skill_id' => $data['skill_id'],
                 'description' => $data['description'],
             ];
             $part->update($inputPart);

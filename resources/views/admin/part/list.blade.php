@@ -1,6 +1,6 @@
 @extends('admin.module.master')
 @section('content')
-{{-- @dd($parts) --}}
+{{-- @dd($parts[1]->section) --}}
   <div class="content-wrapper">
     <section class="content-header">
       <h1>@lang('part.title')</h1>
@@ -27,7 +27,7 @@
                 <tr>
                   <th style="width: 10px">@lang('part.table.id')</th>
                   <th>@lang('part.table.name')</th>
-                  <th>@lang('part.table.section')</th>
+                  <th>@lang('part.table.skill')</th>
                   <th>@lang('part.table.description')</th>
                   <th style="width: 140px">@lang('part.table.action')</th>
                 </tr>
@@ -35,7 +35,7 @@
                   <tr>
                     <td>{{ $part->id }}</td>
                     <td>{{ $part->name }}</td>
-                    <td>{{ $part->section == \App\Models\Part::Listening ? 'Listening' : 'Reading' }}</td>
+                    <td>{{ $part->skill->name }}</td>
                     <td>{{ $part->description}}</td>
                     <td>
                         <a class="btn btn-info btn-xs" href="{{ route('admin.parts.edit', $part->id) }}">@lang('common.edit')</a>

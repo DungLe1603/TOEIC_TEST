@@ -17,6 +17,15 @@ class Part extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'section', 'description'
+        'name', 'skill_id', 'description'
     ];
+    /**
+    * Part belongs to skill
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+   public function skill()
+   {
+       return $this->belongsTo(Skill::class);
+   }
 }

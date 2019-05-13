@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Part;
+use App\Models\Skill;
 
 class PostPartRequest extends FormRequest
 {
@@ -26,7 +26,7 @@ class PostPartRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:parts',
-            'section' => 'in:'.Part::Listening.','.Part::Reading.'',
+            'skill_id' => 'required|exists:skills,id'
         ];
     }
 }
