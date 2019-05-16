@@ -16,7 +16,7 @@ class TestController extends Controller
     /**
     * Contructer
     *
-    * @param App\Service\TestService $TestService testService
+    * @param App\Service\TestService $testService testService
     *
     * @return void
     */
@@ -49,7 +49,7 @@ class TestController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request request
      *
      * @return \Illuminate\Http\Response
      */

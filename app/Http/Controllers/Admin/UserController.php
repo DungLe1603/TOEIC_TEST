@@ -51,7 +51,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request request
      *
      * @return \Illuminate\Http\Response
      */
@@ -67,7 +67,8 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  App\Models\User $user user
+     * @param App\Models\User $user user
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
@@ -81,10 +82,10 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in storage
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param \Illuminate\Http\Request $request request
+     * @param App\Models\User          $user    user
      *
      * @return \Illuminate\Http\Response
      */

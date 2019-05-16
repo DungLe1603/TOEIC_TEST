@@ -20,9 +20,9 @@ class CommentService
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage
      *
-     * @param App\Models\Comment $Comment Comment
+     * @param App\Models\Comment $comment comment
      *
      * @return \Illuminate\Http\Response
      */

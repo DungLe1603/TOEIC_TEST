@@ -51,7 +51,8 @@ class PartController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(PostPartRequest $request)
@@ -66,7 +67,8 @@ class PartController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Part $part part
+     * @param App\Models\Part $part part
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Part $part)
