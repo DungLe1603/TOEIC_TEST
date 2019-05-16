@@ -26,10 +26,10 @@ class CommentService
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $Comment)
+    public function destroy(Comment $comment)
     {
         try {
-            return $Comment->delete();
+            return $comment->delete();
         } catch (Exception $e) {
             Log::error($e);
         }

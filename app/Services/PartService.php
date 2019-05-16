@@ -30,13 +30,13 @@ class PartService
     {
         DB::beginTransaction();
         try {
-            $Part = Part::create([
+            $part = Part::create([
                 'name' => $data['name'],
                 'skill_id' => $data['skill_id'],
-                'description' => $data['description'],                
+                'description' => $data['description'],
             ]);
             DB::commit();
-            return $Part;
+            return $part;
         } catch (Exception $e) {
             Log::error($e);
             DB::rollback();

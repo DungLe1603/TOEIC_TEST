@@ -24,4 +24,3 @@ class AdminMiddleware
         return redirect('login');
     }
 }
- 

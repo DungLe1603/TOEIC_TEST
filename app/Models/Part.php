@@ -6,9 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Part extends Model
 {
-    const Listening = 1;
-    const Reading = 2;
-
     public $timestamps = false;
 
     /**
@@ -24,8 +21,8 @@ class Part extends Model
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
     */
-   public function skill()
-   {
-       return $this->belongsTo(Skill::class);
-   }
+    public function skill()
+    {
+        return $this->belongsTo(Skill::class);
+    }
 }

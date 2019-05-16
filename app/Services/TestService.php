@@ -30,12 +30,12 @@ class TestService
     {
         DB::beginTransaction();
         try {
-            $Test = Test::create([
+            $test = Test::create([
                 'name' => $data['name'],
-                'description' => $data['description'],                
+                'description' => $data['description'],
             ]);
             DB::commit();
-            return $Test;
+            return $test;
         } catch (Exception $e) {
             Log::error($e);
             DB::rollback();

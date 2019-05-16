@@ -51,7 +51,7 @@ class PartController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(PostPartRequest $request)
@@ -64,20 +64,9 @@ class PartController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
-     * @param  Part  $part part
+     * @param  Part $part part
      * @return \Illuminate\Http\Response
      */
     public function edit(Part $part)
@@ -89,12 +78,12 @@ class PartController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  App\Http\Requests\PutPartRequest $request request
-     * @param  App\Models\Part                  $part    part
-     * 
+     * @param App\Http\Requests\PutPartRequest $request request
+     * @param App\Models\Part                  $part    part
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update(PutPartRequest $request,Part $part)
+    public function update(PutPartRequest $request, Part $part)
     {
         $data = $request->all();
         if (!empty($this->partService->update($data, $part))) {
