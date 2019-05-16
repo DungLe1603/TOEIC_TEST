@@ -6,7 +6,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class LoginService
-{ 
+{
+
+ 
     /**
      * Handle process login
      *

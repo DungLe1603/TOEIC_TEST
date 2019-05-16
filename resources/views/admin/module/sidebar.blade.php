@@ -12,8 +12,8 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li class="active"><a href="#"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.user.list')</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.user.add')</a></li>
+                <li class="active"><a href="{{ route('admin.users.index') }}"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.user.list')</a></li>
+                <li><a href="{{ route('admin.users.create') }}"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.user.add')</a></li>
             </ul>
         </li>
         <li class="treeview">
@@ -24,8 +24,8 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li class="active"><a href="#"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.category.list')</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.category.add')</a></li>
+                <li class="active"><a href="{{ route('admin.parts.index') }}"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.category.list')</a></li>
+                <li><a href="{{ route('admin.parts.create') }}"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.category.add')</a></li>
             </ul>
         </li>
         <li class="treeview">
@@ -36,8 +36,8 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li class="active"><a href="#"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.test.list')</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.test.add')</a></li>
+                <li class="active"><a href="{{ route('admin.tests.index') }}"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.test.list')</a></li>
+                <li><a href="{{ route('admin.tests.create') }}"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.test.add')</a></li>
             </ul>
         </li>
         <li class="treeview">
@@ -48,7 +48,7 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li class="active"><a href="#"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.comment.list')</a></li>
+                <li class="active"><a href="{{ route('admin.comments.index') }}"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.comment.list')</a></li>
             </ul>
         </li>
         <li class="treeview">

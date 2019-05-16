@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="box-top">
-            <a class="btn btn-success btn-md" href="#">@lang('user.add.title')</a>
+            <a class="btn btn-success btn-md" href="{{ route('admin.users.create') }}">@lang('user.add.title')</a>
           </div>
         </div>
         <div class="col-md-12">
@@ -38,17 +38,20 @@
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->email ? $user->email : '-'}}</td>
                     <td>{{ $user->name }}</td>
-                    <td>{{ $user->birthday }}</td>
-                    <td>{{ $user->gender }}</td>
-                    <td>@lang('user.status.active')</td>
+                    <td>{{ $user->birthday}}</td>
+                    {{-- <td>{{ $user->gender}}</td> --}}
+                    <td>{{ $user->gender == \App\Models\USER::MALE ? 'Male' : 'Female' }}</td>
+                    @if ($user->block_flag == 1)
+                      <td>@lang('user.status.block')</td>
+                    @else
+                      <td>@lang('user.status.active')</td>
+                    @endif                    
                     <td>
-                        <a class="btn btn-info btn-xs" href="#">@lang('common.edit')</a>
-                        <form class="form-inline" action="#" method="POST">
+                        <a class="btn btn-info btn-xs" href="{{ route('admin.users.edit', $user->id) }}">@lang('common.edit')</a>
+                        <form class="form-inline" action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
-                          {{-- @if ($user->role_id != \App\Models\Role::ADMIN_ROLE) --}}
-                            <button type="submit" class="btn btn-warning btn-xs" onclick="return confirm('@lang('common.message.block_question')')">@lang('common.block')</button>
-                          {{-- @endif --}}
+                          <button type="submit" class="btn btn-warning btn-xs" onclick="return confirm('@lang('common.message.confirm_delete')')">@lang('common.delete')</button>
                         </form>
                     </td>
                   </tr>
@@ -57,7 +60,7 @@
             </div>
             <div class="box-footer clearfix">
               <ul class="pagination pagination-sm no-margin pull-right">
-                  {{-- {{ $users->links() }} --}}
+                  {{ $users->links() }}
               </ul>
             </div>
           </div>
