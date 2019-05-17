@@ -4,19 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Test extends Model
+class Picture extends Model
 {
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'description'
-    ];
-
-    /**
-    * Test has many questions
+    * Picture have multi question
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
     */

@@ -42,7 +42,7 @@
                         <form class="form-inline" action="{{ route('admin.parts.destroy', $part->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-warning btn-xs" onclick="return confirm('@lang('common.message.confirm_delete')')">@lang('common.delete')</button>
+                          <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('@lang('common.message.confirm_delete')')">@lang('common.delete')</button>
                         </form>
                     </td>
                   </tr>
