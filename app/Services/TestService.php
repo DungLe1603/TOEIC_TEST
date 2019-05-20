@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Models\Test;
+use App\Models\Part;
+use App\Models\Question;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -17,6 +19,23 @@ class TestService
     public function getTests()
     {
         return Test::select('id', 'name', 'description')->get();
+    }
+
+    /**
+     * Get detail data of test
+     *
+     * @param string $name part name
+     *
+     * @return object
+     */
+    public function getQuestionInPart($name)
+    {
+        return Question::select('id', 'content', 'picture_id')
+            ->whereHas('part', function ($query) use($name) {
+                $query->where('name', $name);
+            })
+            ->with('picture')
+            ->get();
     }
 
     /**

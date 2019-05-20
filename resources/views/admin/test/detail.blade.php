@@ -22,10 +22,27 @@
             </div>
             <div class="box-body">
               <h4><strong>Listening Test</strong></h4>
-              @foreach ($parts as $key => $part)
+              @foreach ($parts as $p_key => $part)
                 <div class="show-part">
-                  <p>{{ $part->name }}</p>
+                  <p><strong>{{ $part->name }}</strong></p>
                   <p>{{ $part->description }}</p>
+                </div>
+                <div class="show-question">
+                  @foreach ($questions[$p_key] as $q_key=> $question)
+                    <div class="show-question">
+                      <p>{{ $q_key+1 }} {{ $question->content }}</p>
+                      @if(isset($question->picture_id))
+                        <img src="{{ $question->picture->path }}" class="question-img" alt="Question Image">
+                      @endif
+                    </div>
+                    <div class="show-answer row">
+                      @foreach ($question->answers as $answer)
+                        <div class="col-md-3">
+                          <p>{{ $answer->content }}</p>
+                        </div>
+                      @endforeach
+                    </div>
+                  @endforeach
                 </div>
               @endforeach
             </div>

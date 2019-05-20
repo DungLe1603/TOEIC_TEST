@@ -46,8 +46,12 @@ class TestController extends Controller
      */
     public function show(Test $test)
     {
-        $parts = Part::all();
-        return view('admin.test.detail', compact('test', 'parts'));
+        $questions = [];        
+        $parts = Part::select('id', 'name', 'description')->get();
+        foreach($parts as $key => $part) {
+            $questions[$key] = $this->testService->getQuestionInPart($part->name);
+        }
+        return view('admin.test.detail', compact('test', 'parts', 'questions'));
     }
 
     /**
