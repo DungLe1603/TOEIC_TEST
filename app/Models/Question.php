@@ -45,4 +45,14 @@ class Question extends Model
     {
         return $this->hasMany(Answer::class);
     }
+
+    /**
+    * Question belongs to group
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    */
+    public function group()
+    {
+        return $this->belongsTo(GroupQuestion::class, 'group_id');
+    }
 }

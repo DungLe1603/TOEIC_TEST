@@ -135,3 +135,10 @@
   height: 250px;
   border-radius: 50%;
 }
+.question-img {
+  /* width: 450px; */
+  /* height: 350px; */
+}
+.show-part {
+  margin: 20px 0;
+}
