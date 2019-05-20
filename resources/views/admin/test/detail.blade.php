@@ -97,7 +97,7 @@
                             <p><strong>{{ trans('test.following_direction', ['num1' => $number, 'num2' => $number+count($group->questions)-1, 'type' => $group->type]) }}</strong></p>
                         </div>
                         @foreach ($group->questions as $question)
-                          <p>{{ $question->content }}</p>
+                          <p>{!! nl2br($question->content) !!}</p>
                           <div class="show-answer row">
                             <div class="col-md-1">{{ $number++ }}</div>
                             @foreach ($question->answers as $answer)
