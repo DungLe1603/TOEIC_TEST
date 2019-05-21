@@ -22,4 +22,9 @@ return [
     'edit' => [
         'title' => 'Edit test',
     ],
+    'skill' => [
+        'listening' => 'Listening test',
+        'reading' => 'Reading test',
+    ],
+    'following_direction' => 'Questions :num1 - :num2 refer to the following :type.'
 ];

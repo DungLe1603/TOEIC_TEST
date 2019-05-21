@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Test;
+use App\Models\Part;
 use App\Services\TestService;
 use App\Http\Requests\Admin\PostTestRequest;
 use App\Http\Requests\Admin\PutTestRequest;
@@ -34,6 +35,25 @@ class TestController extends Controller
     {
         $tests = $this->testService->getTests();
         return view('admin.test.list', compact('tests'));
+    }
+
+    /**
+     * Show the detail of specified resource.
+     *
+     * @param Admin\Models\Test $test test
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Test $test)
+    {
+        $questions = [];
+        $parts =Part::all();
+        foreach ($parts as $key => $part) {
+            $questions[$key] = $this->testService->getQuestionInPart($test->id, $part->name);
+        }
+        $groupPart6 = $this->testService->getGroupInPart($test->id, 'Part 6');
+        $groupPart7 = $this->testService->getGroupInPart($test->id, 'Part 7');
+        return view('admin.test.detail', compact('test', 'parts', 'questions', 'groupPart6', 'groupPart7'));
     }
 
     /**

@@ -16,13 +16,24 @@ class Part extends Model
     protected $fillable = [
         'name', 'skill_id', 'description'
     ];
+
+    /**
+    * Part belongs to skill
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    */
+    public function skill()
+    {
+        return $this->belongsTo(Skill::class);
+    }
+
     /**
     * Part belongs to skill
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
     */
-    public function skill()
+    public function question()
     {
-        return $this->belongsTo(Skill::class);
+        return $this->hasMany(Question::class);
     }
 }

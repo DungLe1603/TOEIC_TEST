@@ -14,4 +14,14 @@ class Test extends Model
     protected $fillable = [
         'name', 'description'
     ];
+
+    /**
+    * Test has many questions
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
 }
