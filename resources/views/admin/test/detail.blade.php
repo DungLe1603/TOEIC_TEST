@@ -38,6 +38,9 @@
                         @if(isset($question->picture_id))
                           <img src="{{ $question->picture->path }}" class="question-img" alt="Question Image">
                         @endif
+                        <audio controls>
+                          <source src="{{ $question->voice['path'] }}">
+                        </audio>
                       </div>
                       @endforeach
                       @break

@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Picture extends Model
+class Voice extends Model
 {
     /**
-    * Picture have multi question
+    * Voice have multi question
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
     */
@@ -17,17 +17,17 @@ class Picture extends Model
     }
 
     /**
-     * Get the picture.
+     * Get the voice.
      *
-     * @param string $imageName imageName
+     * @param string $path path
      *
      * @return string
      */
-    public function getPathAttribute($imageName)
+    public function getPathAttribute($path)
     {
-        if (empty($imageName)) {
-            return config('define.path.default_image');
+        if (empty($path)) {
+            return config('define.path.default_voice');
         }
-        return asset('upload/' . $imageName);
+        return asset('upload/' . $path);
     }
 }

@@ -32,12 +32,12 @@ class TestService
      */
     public function getQuestionInPart($testId, $part)
     {
-        return Question::select('id', 'content', 'picture_id')
+        return Question::select('id', 'content', 'picture_id', 'voice_id')
             ->where('test_id', $testId)
             ->whereHas('part', function ($query) use ($part) {
                 $query->where('name', $part);
             })
-            ->with('picture')
+            ->with('picture', 'voice')
             ->get();
     }
 

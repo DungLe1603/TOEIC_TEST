@@ -17,6 +17,16 @@ class Question extends Model
     }
 
     /**
+    * Question belongs to picture
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    */
+    public function voice()
+    {
+        return $this->belongsTo(Voice::class);
+    }
+
+    /**
     * Question belongs to test
     *
     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
