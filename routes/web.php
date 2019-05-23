@@ -23,4 +23,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Adm
     Route::resource('parts', 'PartController');
     Route::resource('tests', 'TestController');
     Route::resource('comments', 'CommentController')->only('index', 'show', 'destroy');
+    Route::resource('questions', 'QuestionController');
 });

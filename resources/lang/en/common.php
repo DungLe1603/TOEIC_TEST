@@ -6,6 +6,7 @@ return [
     'reset' => 'Reset',
     'submit' => 'Save',
     'detail' => 'Detail',
+    'view' => 'View',
     'show' => 'Show',
     'back' => 'Back',
     'upload' => 'Upload',
@@ -13,6 +14,7 @@ return [
     'block' => 'Block',
     'unblock' => 'Unblock',
     'active' => 'Active',
+    'more' => 'More',
     'table' => [
         'num' => 'No. ',
         'action' => 'ACtion',
