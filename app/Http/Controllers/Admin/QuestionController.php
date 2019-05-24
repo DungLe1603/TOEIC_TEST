@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Question;
+use App\Models\Part;
 use App\Services\QuestionService;
 
 // use App\Http\Requests\Admin\PostQuestionRequest;
@@ -46,8 +47,7 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        // $questions = $this->questionService->getQuestionsInTest($id);
-        // return view('admin.question.list', compact('questions'));
+
     }
 
     /**
@@ -57,7 +57,8 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        $parts = Part::select('id', 'name')->get();
+        return view('admin.question.create', compact('parts'));
     }
 
     /**
@@ -68,7 +69,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
