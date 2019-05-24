@@ -18,7 +18,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">@lang('question.add.title')</h3>
             </div>
-            <form method="POST" role="form" action="{{ route('admin.questions.store') }}">
+            <form method="POST" role="form" action="{{ route('admin.test.questions.store', $id) }}">
               @csrf
               <div class="box-body">
 								<div class="form-group">
@@ -26,7 +26,7 @@
 									<select name="part_id" class="form-control" id="js-part-id">
 										<option value="">Select part</option>
 										@foreach ($parts as $item)
-											<option {{ old('part_id') == $item->id ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }}</option>
+											<option value="{{ $item->id }}">{{ $item->name }}</option>
 										@endforeach
 									</select>
 									@if ($errors->has('part_id'))

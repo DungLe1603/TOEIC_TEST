@@ -26,50 +26,48 @@ class QuestionController extends Controller
     {
         $this->questionService = $questionService;
     }
-
+    
     /**
-     * Display a listing of the resource.
+     * Display the question listing of the resource.
+     *
+     * @param int $id test_id
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $questions = Question::all();
-        dd($questions);
-    }
-
-    /**
-     * Display a resource.
-     *
-     * @param int $id id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-
+        $questions = $this->questionService->getQuestionsInTest($id);
+        return view('admin.question.list', compact('questions', 'id'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param int $id test_id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         $parts = Part::select('id', 'name')->get();
-        return view('admin.question.create', compact('parts'));
+        return view('admin.question.create', compact('parts', 'id'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id test_id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        dd($request->all());
+        $data = $request->all();
+        if (!empty($this->questionService->store($data))) {
+            return redirect()->route('admin.test.questions', $id)->with('success', trans('common.message.create_success'));
+        }
+        return redirect()->route('admin.question.create', $id)->with('error', trans('common.message.create_error'));
     }
 
     /**
@@ -79,9 +77,9 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Question $question)
+    public function edit($id, Question $question)
     {
-        return view('admin.question.edit', compact('question'));
+        return view('admin.question.edit', compact('id', 'question'));
     }
 
     /**

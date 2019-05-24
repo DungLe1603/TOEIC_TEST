@@ -13,21 +13,18 @@ use App\Http\Requests\Admin\PutTestRequest;
 
 class TestController extends Controller
 {
-    private $questionService;
     private $testService;
 
     /**
     * Contructer
     *
-    * @param App\Service\TestService     $testService     testService
-    * @param App\Service\QuestionService $questionService questionService
+    * @param App\Service\TestService $testService testService
     *
     * @return void
     */
-    public function __construct(TestService $testService, QuestionService $questionService)
+    public function __construct(TestService $testService)
     {
         $this->testService = $testService;
-        $this->questionService = $questionService;
     }
 
     /**
@@ -128,18 +125,5 @@ class TestController extends Controller
             return redirect()->route('admin.tests.index')->with('success', trans('common.message.delete_success'));
         }
         return redirect()->route('admin.tests.index')->with('error', trans('common.message.delete_error'));
-    }
-
-    /**
-     * Display the question listing of the resource.
-     *
-     * @param int $id test_id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showQuestion($id)
-    {
-        $questions = $this->questionService->getQuestionsInTest($id);
-        return view('admin.question.list', compact('questions'));
     }
 }

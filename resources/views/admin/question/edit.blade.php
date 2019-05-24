@@ -18,7 +18,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">@lang('question.edit.title')</h3>
             </div>
-            <form method="POST" role="form" action="{{ route('admin.questions.update', $question->id) }}">
+            <form method="POST" role="form" action="{{ route('admin.test.questions.update', ['id' => $id, 'question_id' => $question->id]) }}">
               @csrf
               @method('PUT')
               <div class="box-body">
