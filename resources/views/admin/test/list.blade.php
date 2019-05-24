@@ -32,7 +32,7 @@
                 @foreach ($tests as $test)
                   <tr>
                     <td>{{ $test->id }}</td>
-                    <td><a href={{ route('admin.questions.show', $test->id) }}">{{ $test->name }}</a></td>
+                    <td><a href="{{ route('admin.test.questions', $test->id) }}">{{ $test->name }}</a></td>
                     <td>{{ $test->description}}</td>
                     <td>
                       <a class="btn btn-info btn-xs" href="{{ route('admin.tests.show', $test->id) }}">@lang('common.view')</a>

@@ -21,6 +21,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Admin', 'as' => 'admin.'], function () {
     Route::resource('users', 'UserController');
     Route::resource('parts', 'PartController');
+    Route::get('tests/{id}/questions', 'TestController@showQuestion') -> name('test.questions');
     Route::resource('tests', 'TestController');
     Route::resource('comments', 'CommentController')->only('index', 'show', 'destroy');
     Route::resource('questions', 'QuestionController');

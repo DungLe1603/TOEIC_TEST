@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Question;
 use App\Services\QuestionService;
+
 // use App\Http\Requests\Admin\PostQuestionRequest;
 // use App\Http\Requests\Admin\PutQuestionRequest;
 
@@ -33,19 +34,20 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::all();
-        // dd($questions);
+        dd($questions);
     }
+
     /**
-     * Display a listing of the resource.
+     * Display a resource.
      *
-     * @param int $id test_id
+     * @param int $id id
      *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $questions = $this->questionService->getQuestionsInTest($id);
-        return view('admin.question.list', compact('questions'));
+        // $questions = $this->questionService->getQuestionsInTest($id);
+        // return view('admin.question.list', compact('questions'));
     }
 
     /**
@@ -61,7 +63,7 @@ class QuestionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -84,8 +86,8 @@ class QuestionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int                      $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -96,7 +98,7 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

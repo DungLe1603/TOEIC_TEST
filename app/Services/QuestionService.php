@@ -15,7 +15,8 @@ class QuestionService
     /**
      * Get all data table Tests
      *
-     * @param int $id test_id
+     * @param  int $id test_id
+     *
      * @return object
      */
     public function getQuestionsInTest($id)
