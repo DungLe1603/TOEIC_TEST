@@ -111,7 +111,7 @@ class QuestionService
      * Create answer
      *
      * @param int    $questionId questionId
-     * @param string $content     content
+     * @param string $content    content
      * @param int    $isCorrect  isCorrect
      *
      * @return \Illuminate\Http\Response
