@@ -142,3 +142,10 @@
 .show-part {
   margin: 20px 0;
 }
+.form-answer .form-control {
+  display: inline-block;
+  width: 95%;
+}
+.form-answer .form-radio {
+  width: 5%;
+}

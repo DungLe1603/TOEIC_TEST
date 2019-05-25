@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'test_id', 'part_id', 'group_id', 'content', 'picture_id', 'voice_id'
+    ];
+
+    /**
     * Question belongs to picture
     *
     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

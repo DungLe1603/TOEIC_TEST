@@ -18,7 +18,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">@lang('question.add.title')</h3>
             </div>
-            <form method="POST" role="form" action="{{ route('admin.test.questions.store', $id) }}">
+            <form method="POST" role="form" enctype="multipart/form-data" action="{{ route('admin.test.questions.store', $id) }}">
               @csrf
               <div class="box-body">
 								<div class="form-group">

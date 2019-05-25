@@ -56,15 +56,15 @@ class QuestionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id test_id
+     * @param \Illuminate\Http\Request $request request
+     * @param int                      $id      test_id
      *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $id)
     {
         $data = $request->all();
-        if (!empty($this->questionService->store($data))) {
+        if (!empty($this->questionService->store($data, $id))) {
             return redirect()->route('admin.test.questions', $id)->with('success', trans('common.message.create_success'));
         }
         return redirect()->route('admin.question.create', $id)->with('error', trans('common.message.create_error'));
@@ -73,6 +73,7 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @param int                 $id       test_id
      * @param App\Models\Question $question question
      *
      * @return \Illuminate\Http\Response
@@ -80,28 +81,5 @@ class QuestionController extends Controller
     public function edit($id, Question $question)
     {
         return view('admin.question.edit', compact('id', 'question'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
