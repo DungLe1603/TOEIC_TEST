@@ -16,7 +16,7 @@ class GroupQuestion extends Model
     ];
 
     /**
-    * Question has many answers
+    * Group has picture
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
     */
@@ -26,7 +26,17 @@ class GroupQuestion extends Model
     }
 
     /**
-    * Question has many answers
+    * Group has voice
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+    public function voice()
+    {
+        return $this->belongsTo(Voice::class);
+    }
+
+    /**
+    * Group has questions
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
     */
