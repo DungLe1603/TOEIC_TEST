@@ -35,8 +35,8 @@
                     <td>{{ $question->part->name }}</td>
                     <td>{{ $question->content }}</td>
                     <td>
-                      <a class="btn btn-warning btn-xs" href="{{ route('admin.test.questions.edit', ['id' => $id, 'question_id' => $question->id]) }}">@lang('common.more')</a>
-                      <form class="form-inline" action="{{ route('admin.test.questions.destroy', ['id' => $id, 'question_id' => $question->id]) }}" method="POST">
+                      <a class="btn btn-warning btn-xs" href="{{ route('admin.questions.edit', $question->id) }}">@lang('common.more')</a>
+                      <form class="form-inline" action="{{ route('admin.questions.destroy', $question->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('@lang('common.message.confirm_delete')')">@lang('common.delete')</button>

@@ -24,9 +24,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Adm
     Route::get('tests/{id}/questions', 'QuestionController@index') -> name('test.questions');
     Route::get('tests/{id}/questions/create', 'QuestionController@create') -> name('test.questions.create');
     Route::post('tests/{id}/questions', 'QuestionController@store') -> name('test.questions.store');
-    Route::get('tests/{id}/questions/{question_id}/edit', 'QuestionController@edit') -> name('test.questions.edit');
-    Route::post('tests/{id}/questions/{question_id}', 'QuestionController@update') -> name('test.questions.update');
-    Route::get('tests/{id}/questions/{question_id}', 'QuestionController@destroy') -> name('test.questions.destroy');
+    Route::get('questions/{question_id}/edit', 'QuestionController@edit') -> name('questions.edit');
+    Route::post('questions/{question_id}', 'QuestionController@update') -> name('questions.update');
+    Route::get('questions/{question_id}', 'QuestionController@destroy') -> name('questions.destroy');
     Route::resource('tests', 'TestController');
     Route::resource('comments', 'CommentController')->only('index', 'show', 'destroy');
     // Route::resource('questions', 'QuestionController');

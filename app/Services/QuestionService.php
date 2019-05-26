@@ -124,4 +124,21 @@ class QuestionService
             'correct_flag' => $isCorrect,
         ]);
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param App\Models\Question $question question
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Question $question)
+    {
+        try {
+            return $question->delete();
+        } catch (Exception $e) {
+            Log::error($e);
+        }
+        return false;
+    }
 }

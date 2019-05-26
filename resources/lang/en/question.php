@@ -4,12 +4,15 @@ return [
     'title' => 'Question management',
     'list' => 'Questions list',
     'table' => [
+        'question' => 'Question',
         'id' => 'Id',
         'content' => 'Content',
         'part' => 'Part',
         'group' => 'group',
         'type' => 'Type',
-        'action' => 'Action'
+        'picture' => 'Picture',
+        'voice' => 'Voice',
+        'answers' => 'Answers',
     ],
     'placeholder' => [
         'search' => 'Search',

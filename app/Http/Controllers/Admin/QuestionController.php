@@ -73,13 +73,45 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int                 $id       test_id
+     * @param int $id id questionId
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $question = Question::where('id', $id)->first();
+        $group = $question->group;
+        return view('admin.question.edit', compact('question', 'group'));
+    }
+
+    /**
+    * Update the specified resource in storage.
+    *
+    * @param \Illuminate\Http\Request $request  request
+    * @param App\Models\Question      $question question
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function update(Request $request, Question $question)
+    {
+        $data = $request->all();
+        dd($data);
+        dd($question);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
      * @param App\Models\Question $question question
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Question $question)
+    public function destroy(Question $question)
     {
-        return view('admin.question.edit', compact('id', 'question'));
+        $testId = $question->test_id;
+        if ($this->questionService->destroy($question)) {
+            return redirect()->route('admin.test.questions.index', $testId)->with('success', trans('common.message.delete_success'));
+        }
+        return redirect()->route('admin.test.questions.index', $testId)->with('error', trans('common.message.delete_error'));
     }
 }
