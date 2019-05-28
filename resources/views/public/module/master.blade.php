@@ -4,7 +4,6 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>TOEIC TEST</title>
-	<link rel="stylesheet" type="text/css" href="public/template/toeic.css">
 	<link rel="stylesheet" type="text/css" href="public/template/jquery-ui-1.8.18.custom.css">
 	<link rel="stylesheet" type="text/css" href="public/template/jquery.fancybox-1.3.1.css">
 	<link rel="stylesheet" href="public/template/jplayer.blue.monday.css">
@@ -12,6 +11,7 @@
 	<link rel="stylesheet" href="public/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/shop-homepage.css">
     <link rel="stylesheet" href="public/css/my.css">
+	<link rel="stylesheet" type="text/css" href="public/css/toeic.css">
 
 </head>
 <body>

@@ -150,7 +150,7 @@ div.hr {
 	list-style: none;
 	width: 100%;
 	height: 40px;
-	background: url('../gfx/main_menu.png');
+	background: #1A4F2C;
 }
 
 #main-menu li {
@@ -385,7 +385,7 @@ a.button.gray,span.button.gray {
 #footer-links .column {
 	float: left;
 	margin: 0 20px 0 0;
-	width: 180px;
+	width: 30%;
 }
 
 #footer-links .column ul {
@@ -572,7 +572,7 @@ form.margin fieldset {
 }
 
 #main-column {
-	width: 80%;
+	width: 100%;
 	float: left;
 	margin: 0 10px 10px 10px;
 }
@@ -1274,12 +1274,12 @@ div.news-entry-image {
 
 div.news-entry-body {
 	float: left;
-	width: 430px;
+	width: 800px;
 }
 
 div.news-entry-image img {
 	width: 100px;
-	height: 75px;
+	height: 100px;
 }
 
 div.news-entry p {

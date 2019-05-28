@@ -1,7 +1,3 @@
-
-#main-menu {
-    background: #1A4F2C;
-}
 #main-menu li:hover{
     background: #90ee90;
 }
@@ -11,4 +7,10 @@
 }
 #footer {
     margin-top: 30px;
+}
+.blue-text {
+    color: #00f;
+}
+.p-5 {
+    padding: 5px;
 }
