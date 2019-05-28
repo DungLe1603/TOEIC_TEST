@@ -1,0 +1,175 @@
+$(function() {
+	$('div.index-top-block a.title').hover(function() {
+		$(this).parent().find('.description').css('visibility', 'visible');
+	}, function() {
+		$(this).parent().find('.description').css('visibility', 'hidden');
+	});
+	
+	$('a.lightbox').fancybox({
+		'overlayOpacity': 0.7,
+		'overlayColor'	: '#000',
+		'centerOnScroll': true
+	});
+
+	$('a.youtube').live('click', function() {
+		$.fancybox({
+			'padding'		: 0,
+			'autoScale'		: false,
+			'transitionIn'	: 'none',
+			'overlayOpacity': 0.7,
+			'overlayColor'	: '#000',
+			'transitionOut'	: 'none',
+			'centerOnScroll': true,
+			'title'			: this.title,
+			'width'			: 680,
+			'height'		: 495,
+			'href'			: this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
+			'type'			: 'swf',
+			'swf'			: {
+			   	'wmode'		: 'transparent',
+				'allowfullscreen'	: 'true'
+			}
+		});
+
+		return false;
+	});
+	
+
+	$(function(){
+
+$("#switch-to-service").live('change', function(){
+			var switchTo = $("#switch-to-service").val();
+			window.location = 'http://' + switchTo + '?force_lang=1';
+		});
+
+		$("input.date").each(function(){
+			$(this).datepicker({dateFormat:'yy-mm-dd'});
+		});
+		$('div#wrapper').live('contextmenu', 'img', function(e){ return false; })
+	 });
+
+	;
+
+});
+function markAnswer(resid, question, answer, el, q) {
+	$.ajax({
+		url: toeicUrl + "test/markAnswer/q/"+q+"/resid/"+resid+"/qnr/" + question + "/answer/" + answer,
+		dataType: "json",
+		success: function(data) {
+			$('#' + el).attr('checked', true);
+		}
+	});
+	
+}
+
+function refreshGroupAssignments(testId) {
+	url =  systemUrl + "groups/forTest/id/"+testId
+	$('#assigned_groups_' + testId).load(url);
+}
+
+function checkAllUsers($groupId) {
+	$("input.group_check_" + $groupId).each(function(){this.checked = true;});return false;
+}
+
+function showMoveDialog($groupId) {
+	//sprawdzenie czy zaznaczeni użytkownicy
+	var $checked = false;
+	$ids = new Array();
+	$('input.group_check_' + $groupId+':checked').each(function(){
+		$checked = true;
+	});
+	
+	if ($checked  == false) {
+		return false;
+	}
+	
+	
+	
+	var $dialog = $('#move_users_div_' + $groupId)
+	 .dialog({
+	 width: 500,
+	 height: 250,
+	 modal: true,
+	 buttons:  { "Ok": function(target) { 
+		 			$('#move_to_id_'+$groupId).val($('#move_to_group_'+$groupId).val());
+		 			$.ajax({
+						  type: 'POST',
+						  url: systemUrl + "groups/moveUsers",
+						  data: $('#group_form_'+$groupId).serialize(),
+						  success: function(data){
+								$dialog.dialog("close");
+								//odswiezenie listy użytkowników (profilegrouplistview)
+								refreshUsers($groupId);
+								refreshUsers($('#move_to_group_'+$groupId).val());
+								
+						  }
+						});
+				 } 
+			   } 
+	 });
+	 
+	 
+}
+
+function refreshUsers(id) {
+	 $.ajax({
+		 url: systemUrl + "groups/table/id/" + id,
+		  async:false,
+		  success: function(j){
+			  $('#users_td_' + id).html(j);
+		    }
+		});
+}
+
+function showRemoveFromGroupDialog($groupId) {
+    //sprawdzenie czy zaznaczeni użytkownicy
+    var $checked = false;
+    $ids = new Array();
+    $('input.group_check_' + $groupId+':checked').each(function(){
+        $checked = true;
+    });
+
+    if ($checked  == false) {
+        return false;
+    }
+
+
+    var $dialog = $('#remove_users_div_' + $groupId)
+        .dialog({
+            width: 500,
+            height: 250,
+            modal: true,
+            buttons:  { "Ok": function(target) {
+                $.ajax({
+                    type: 'POST',
+                    url: systemUrl + "groups/removeUsers",
+                    data: $('#group_form_'+$groupId).serialize(),
+                    success: function(data){
+                        $dialog.dialog("close");
+                        //odswiezenie listy użytkowników (profilegrouplistview)
+                        refreshUsers($groupId);
+                        refreshUsers($('#move_to_group_'+$groupId).val());
+
+                    }
+                });
+            },
+            "Cancel": function(target) {
+                $( this ).dialog( "close" );
+            }
+            }
+
+        });
+}
+
+
+function showInviteGroupDialog($groupId) {
+
+    var $dialog = $('#invite_users_div_' + $groupId)
+        .dialog({
+            width: 500,
+            height: 250,
+            modal: true
+        });
+}
+
+

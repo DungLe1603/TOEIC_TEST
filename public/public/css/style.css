@@ -1,0 +1,14 @@
+
+#main-menu {
+    background: #1A4F2C;
+}
+#main-menu li:hover{
+    background: #90ee90;
+}
+.carousel-inner .item .slide-image {
+    height: 400px;
+    width: 960px ;
+}
+#footer {
+    margin-top: 30px;
+}
