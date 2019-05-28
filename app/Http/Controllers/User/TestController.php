@@ -30,6 +30,6 @@ class TestController extends Controller
     public function index()
     {
         $tests = $this->testService->getTests();
-        return view('public.test.list',compact('tests'));
+        return view('public.test.list', compact('tests'));
     }
 }
