@@ -40,7 +40,7 @@
                 <li><a href="{{ route('admin.tests.create') }}"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.test.add')</a></li>
             </ul>
         </li>
-        <li class="treeview">
+        {{-- <li class="treeview">
             <a href="#">
                 <i class="fa fa-asterisk"></i> <span>@lang('admin.sidebar.comment.title')</span>
                 <span class="pull-right-container">
@@ -50,7 +50,7 @@
             <ul class="treeview-menu">
                 <li class="active"><a href="{{ route('admin.comments.index') }}"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.comment.list')</a></li>
             </ul>
-        </li>
+        </li> --}}
         <li class="treeview">
             <a href="#">
                 <i class="fa fa-bomb"></i> <span>@lang('admin.sidebar.test_result.title')</span>

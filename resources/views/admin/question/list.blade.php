@@ -27,7 +27,7 @@
                   <th style="width: 10px">@lang('question.table.id')</th>
                   <th style="width: 60px">@lang('question.table.part')</th>
                   <th>@lang('question.table.content')</th>
-                  <th style="width: 140px">@lang('question.table.action')</th>
+                  <th style="width: 140px">@lang('common.table.action')</th>
                 </tr>
                 @foreach ($questions as $question)
                   <tr>
