@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class GroupQuestion extends Model
 {
     /**
+    * The attributes that are mass assignable.
+    *
+    * @var array
+    */
+    protected $fillable = [
+       'type', 'picture_id', 'voice_id'
+    ];
+
+    /**
     * Question has many answers
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasMany

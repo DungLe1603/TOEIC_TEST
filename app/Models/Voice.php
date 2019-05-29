@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Voice extends Model
 {
     /**
+    * The attributes that are mass assignable.
+    *
+    * @var array
+    */
+    protected $fillable = [
+       'path'
+    ];
+
+    /**
     * Voice have multi question
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
