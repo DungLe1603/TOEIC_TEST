@@ -33,13 +33,15 @@
                     @if(isset($question->picture_id))                    
                       <div class="form-group">
                         <label for="picture">@lang('question.table.picture')</label>
-                        <img src="{{ $question->picture->path }}" id="image-preview" class="question-img" alt="Question Image">
+                        <br>
+                        <img src="{{ $question->picture->path }}" height="300px" id="image-preview" class="question-img" alt="Question Image">
                         <input id="imgInp" type="file" name="picture" accept="image/gif, image/jpeg, image/png">
                       </div>
                     @endif
                     @if(isset($question->voice_id))                    
                       <div class="form-group">
-                        <label for="voice">@lang('question.table.voice')</label>                        
+                        <label for="voice">@lang('question.table.voice')</label>   
+                        <br>                     
                         <audio controls>
                           <source src="{{ $question->voice['path'] }}">
                         </audio>

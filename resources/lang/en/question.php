@@ -8,7 +8,7 @@ return [
         'id' => 'Id',
         'content' => 'Content',
         'part' => 'Part',
-        'group' => 'group',
+        'group' => 'Group',
         'type' => 'Type',
         'picture' => 'Picture',
         'voice' => 'Voice',

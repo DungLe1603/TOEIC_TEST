@@ -1,6 +1,6 @@
 @extends('public.module.master')
 @section('content')
-  @include('public.module.slide')
+  {{-- @include('public.module.slide') --}}
   <div id="wrapper">
     <div id="main-column">
       <h1>FREE <i>TOEIC</i><sup>®</sup> ONLINE PRACTICE TEST</h1>
