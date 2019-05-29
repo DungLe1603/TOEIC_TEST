@@ -1,0 +1,16 @@
+#main-menu li:hover{
+    background: #90ee90;
+}
+.carousel-inner .item .slide-image {
+    height: 400px;
+    width: 960px ;
+}
+#footer {
+    margin-top: 30px;
+}
+.blue-text {
+    color: #00f;
+}
+.p-5 {
+    padding: 5px;
+}
