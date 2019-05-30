@@ -135,6 +135,7 @@ class QuestionService
     public function destroy(Question $question)
     {
         try {
+            $question->answers()->delete();
             return $question->delete();
         } catch (Exception $e) {
             Log::error($e);

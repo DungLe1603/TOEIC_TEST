@@ -102,16 +102,17 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param App\Models\Question $question question
+     * @param int $id $questionId
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Question $question)
+    public function destroy(int $id)
     {
+        $question = Question::findOrFail($id);
         $testId = $question->test_id;
         if ($this->questionService->destroy($question)) {
-            return redirect()->route('admin.test.questions.index', $testId)->with('success', trans('common.message.delete_success'));
+            return redirect()->route('admin.test.questions', $testId)->with('success', trans('common.message.delete_success'));
         }
-        return redirect()->route('admin.test.questions.index', $testId)->with('error', trans('common.message.delete_error'));
+        return redirect()->route('admin.test.questions', $testId)->with('error', trans('common.message.delete_error'));
     }
 }

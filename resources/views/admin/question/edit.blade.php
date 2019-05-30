@@ -20,7 +20,6 @@
             </div>
             <form method="POST" role="form" enctype="multipart/form-data" action="{{ route('admin.questions.update', $question->id) }}">
               @csrf
-              @method('PUT')
               <div class="box-body">
                 <div class="form-group">
                   <label for="part">@lang('question.table.part')</label>
@@ -53,9 +52,12 @@
                       <input type="text" name="content" class="form-control" value="{{ $question->content }}">
                     </div>
                     <div class="form-group">
-                      <label for="ansers">@lang('question.table.answers') *</label>
+                      <label for="ansers">@lang('question.table.answers')(Check for the correct answer) *</label>
                       @foreach ($question->answers as $key => $answer)
+                      <div class="form-answer">
+                        <input type="radio" name="correct_answer" {{ $answer->correct_flag == '1' ? 'checked' : '' }} value="answer1">
                         <input type="text" name="answers" class="form-control" value="{{ $answer->content }}">
+                      </div>
                       @endforeach
                     </div>
                     @break
@@ -89,9 +91,12 @@
                         <input type="text" name="content" class="form-control" value="{{ $question->content }}">
                       </div>
                       <div class="form-group">
-                        <label for="ansers">@lang('question.table.answers') *</label>
+                        <label for="ansers">@lang('question.table.answers')(Check for the correct answer) *</label>
                         @foreach ($question->answers as $key => $answer)
+                        <div class="form-answer">
+                          <input type="checkbox" name="correct_answers[]" class="form-radio" {{ $answer->correct_flag == '1' ? 'checked' : '' }} value="answers">
                           <input type="text" name="answers" class="form-control" value="{{ $answer->content }}">
+                        </div>
                         @endforeach
                       </div>
                     @endforeach
