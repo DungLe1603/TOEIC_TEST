@@ -94,7 +94,7 @@
                         <label for="ansers">@lang('question.table.answers')(Check for the correct answer) *</label>
                         @foreach ($question->answers as $a_key => $answer)
                         <div class="form-answer">
-                        <input type="checkbox" name="correct_answers[{{ $key}}][]" class="form-radio" {{ $answer->correct_flag == '1' ? 'checked' : '' }} value="answers{{ $a_key}}">
+                          <input type="radio" name="correct_answers[{{ $key}}]" class="form-radio" {{ $answer->correct_flag == '1' ? 'checked' : '' }} value="answers{{ $a_key}}">
                           <input type="text" name="answers[{{ $key}}][]" class="form-control" value="{{ $answer->content }}">
                         </div>
                         @endforeach

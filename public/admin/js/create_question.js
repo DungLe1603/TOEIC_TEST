@@ -6,26 +6,49 @@ $(document).ready(function(){
     var groupQuestion = $('#js-group-question');
     var hiddenButton = $('#js-add-question');
     var data = '';
+    var key = 0;
 
+    var group_answers = function(key) {      
+      gr = '<div class="form-group">';
+      gr += '<label for="answer">Answers (mark the correct answer)*</label>';
+      gr += '<div  class="form-answer">'
+      gr += '<input type="radio" name="correct_answer[' + key + ']" class="form-radio" value="answer0">'
+      gr += '<input type="text" name="answer' + key + '[]" class="form-control" required value="(A) ">';
+      gr += '</div>'
+      gr += '<div  class="form-answer">'
+      gr += '<input type="radio" name="correct_answer[' + key + ']" class="form-radio" value="answer1">'
+      gr += '<input type="text" name="answer' + key + '[]"' + key + '[]" class="form-control" required value="(B) ">';
+      gr += '</div>'
+      gr += '<div  class="form-answer">'
+      gr += '<input type="radio" name="correct_answer[' + key + ']" class="form-radio" value="answer2">'
+      gr += '<input type="text" name="answer' + key + '[]" class="form-control" required value="(C) ">';
+      gr += '</div>'
+      gr += '<div  class="form-answer">'
+      gr += '<input type="radio" name="correct_answer[' + key + ']"  class="form-radio" value="answer3">'
+      gr += '<input type="text" name="answer' + key + '[]" class="form-control" required value="(D) ">';
+      gr += '</div>'
+      gr += '</div>';
+      return gr;
+    }
     answers = '<label for="answer">Answers (Check for the correct answer)*</label>';
     answers += '<div  class="form-answer">'
-    answers += '<input type="radio" name="correct_answer" class="form-radio" value="answer1">'
-    answers += '<input type="text" name="answer1" class="form-control" required value="(A) ">';
+    answers += '<input type="radio" name="correct_answer" class="form-radio" value="answer0">'
+    answers += '<input type="text" name="answer[]" class="form-control" required value="(A) ">';
     answers += '</div>'
     answers += '<div  class="form-answer">'
     answers += '<input type="radio" name="correct_answer" class="form-radio" value="answer1">'
-    answers += '<input type="text" name="answer2" class="form-control" required value="(B) ">';
+    answers += '<input type="text" name="answer[]" class="form-control" required value="(B) ">';
     answers += '</div>'
     answers += '<div  class="form-answer">'
-    answers += '<input type="radio" name="correct_answer" class="form-radio" value="answer1">'
-    answers += '<input type="text" name="answer3" class="form-control" required value="(C) ">';
+    answers += '<input type="radio" name="correct_answer" class="form-radio" value="answer2">'
+    answers += '<input type="text" name="answer[]" class="form-control" required value="(C) ">';
     answers += '</div>'
 
     full_answer = '<div class="form-group">';
     full_answer += answers;
     full_answer += '<div  class="form-answer">'
-    full_answer += '<input type="radio" name="correct_answer" class="form-radio" value="answer1">'
-    full_answer += '<input type="text" name="answer4" class="form-control" required value="(D) ">';
+    full_answer += '<input type="radio" name="correct_answer" class="form-radio" value="answer3>'
+    full_answer += '<input type="text" name="answer[]" class="form-control" required value="(D) ">';
     full_answer += '</div>'
     full_answer += '</div>';
 
@@ -65,26 +88,6 @@ $(document).ready(function(){
     textarea += '<textarea name="content[]" rows="3" class="form-control"></textarea>';
     textarea += '</div>'
 
-    group_answers = '<div class="form-group">';
-    group_answers += '<label for="answer">Answers (mark the correct answer)*</label>';
-    group_answers += '<div  class="form-answer">'
-    group_answers += '<input type="checkbox" name="correct_answer1[]" class="form-radio" value="answer1">'
-    group_answers += '<input type="text" name="answer1[]" class="form-control" required value="(A) ">';
-    group_answers += '</div>'
-    group_answers += '<div  class="form-answer">'
-    group_answers += '<input type="checkbox" name="correct_answer2[]" class="form-radio" value="answer2">'
-    group_answers += '<input type="text" name="answer2[]" class="form-control" required value="(B) ">';
-    group_answers += '</div>'
-    group_answers += '<div  class="form-answer">'
-    group_answers += '<input type="checkbox" name="correct_answer3[]" class="form-radio" value="answer3">'
-    group_answers += '<input type="text" name="answer3[]" class="form-control" required value="(C) ">';
-    group_answers += '</div>'
-    group_answers += '<div  class="form-answer">'
-    group_answers += '<input type="checkbox" name="correct_answer4[]" class="form-radio" value="answer4">'
-    group_answers += '<input type="text" name="answer4[]" class="form-control" required value="(D) ">';
-    group_answers += '</div>'
-    group_answers += '</div>';
-
     switch (id) {
       case "1":
         data = picture + voice + content_listen + full_answer;
@@ -95,24 +98,24 @@ $(document).ready(function(){
       case "3":
       case "4":
         data = group + voice;
-        data += (group_content + group_answers);
-        data += (group_content + group_answers);
-        data += (group_content + group_answers);
+        data += (group_content + group_answers(key++));
+        data += (group_content + group_answers(key++));
+        data += (group_content + group_answers(key++));
         break;
       case "5":
         data = content + full_answer;
         break;
       case "6":
         data = group;
-        data += (textarea + group_answers);
-        data += (textarea + group_answers);
-        data += (textarea + group_answers);
+        data += (textarea + group_answers(key++));
+        data += (textarea + group_answers(key++));
+        data += (textarea + group_answers(key++));
         break;
       case "7":
           hiddenButton.removeClass('hidden');
           data += group + picture;
           data += '<div id="js-question-form">';
-          data += (group_content + group_answers);
+          data += (group_content + group_answers(key++));
           data += '</div>'
           break;
       default:
@@ -122,8 +125,8 @@ $(document).ready(function(){
   });
 
   //Display more question for part 7 by clone
-  $("#js-add-question").on("click", function(){
-    add_data = group_content + group_answers;
-    $(group_content + group_answers).appendTo('#js-question-form');
+  $("#js-add-question").on("click", function(key){
+    add_data = group_content + group_answers(key);
+    $(add_data).appendTo('#js-question-form');
   });
 });
