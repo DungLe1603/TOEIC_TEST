@@ -147,5 +147,8 @@
   width: 95%;
 }
 .form-answer .form-radio {
-  width: 5%;
+  width: 4%;
+}
+.p-10 {
+    padding: 10px;
 }

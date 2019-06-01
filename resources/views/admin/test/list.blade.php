@@ -27,7 +27,7 @@
                   <th style="width: 10px">@lang('test.table.id')</th>
                   <th>@lang('test.table.name')</th>
                   <th>@lang('test.table.description')</th>
-                  <th style="width: 140px">@lang('test.table.action')</th>
+                  <th style="width: 160px">@lang('test.table.action')</th>
                 </tr>
                 @foreach ($tests as $test)
                   <tr>

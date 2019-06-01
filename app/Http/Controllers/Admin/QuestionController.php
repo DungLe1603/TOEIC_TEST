@@ -57,7 +57,7 @@ class QuestionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request request
-     * @param int                      $id      test_id
+     * @param int                      $id      testId
      *
      * @return \Illuminate\Http\Response
      */
@@ -73,13 +73,49 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int                 $id       test_id
-     * @param App\Models\Question $question question
+     * @param int $id id questionId
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Question $question)
+    public function edit($id)
     {
-        return view('admin.question.edit', compact('id', 'question'));
+        $question = Question::where('id', $id)->first();
+        $group = $question->group;
+        return view('admin.question.edit', compact('question', 'group'));
+    }
+
+    /**
+    * Update the specified resource in storage.
+    *
+    * @param \Illuminate\Http\Request $request request
+    * @param int                      $id      questionId
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+        $question = Question::find($id);
+        if (!empty($this->questionService->update($data, $id))) {
+            return redirect()->route('admin.test.questions', $question->test_id)->with('success', trans('common.message.create_success'));
+        }
+        return redirect()->route('admin.question.create', $question->test_id)->with('error', trans('common.message.create_error'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id $questionId
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(int $id)
+    {
+        $question = Question::findOrFail($id);
+        $testId = $question->test_id;
+        if ($this->questionService->destroy($question)) {
+            return redirect()->route('admin.test.questions', $testId)->with('success', trans('common.message.delete_success'));
+        }
+        return redirect()->route('admin.test.questions', $testId)->with('error', trans('common.message.delete_error'));
     }
 }
