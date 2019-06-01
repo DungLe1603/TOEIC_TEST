@@ -57,7 +57,7 @@ class QuestionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request request
-     * @param int                      $id      test_id
+     * @param int                      $id      testId
      *
      * @return \Illuminate\Http\Response
      */
@@ -87,16 +87,19 @@ class QuestionController extends Controller
     /**
     * Update the specified resource in storage.
     *
-    * @param \Illuminate\Http\Request $request  request
-    * @param App\Models\Question      $question question
+    * @param \Illuminate\Http\Request $request request
+    * @param int                      $id      questionId
     *
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, Question $question)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
-        dd($data);
-        dd($question);
+        $question = Question::find($id);
+        if (!empty($this->questionService->update($data, $id))) {
+            return redirect()->route('admin.test.questions', $question->test_id)->with('success', trans('common.message.create_success'));
+        }
+        return redirect()->route('admin.question.create', $question->test_id)->with('error', trans('common.message.create_error'));
     }
 
     /**

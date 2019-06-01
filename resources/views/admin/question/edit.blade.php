@@ -1,5 +1,6 @@
 @extends('admin.module.master')
 @section('content')
+{{-- @dd($question); --}}
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
@@ -34,7 +35,8 @@
                         <label for="picture">@lang('question.table.picture')</label>
                         <br>
                         <img src="{{ $question->picture->path }}" height="300px" id="image-preview" class="question-img" alt="Question Image">
-                        <input id="imgInp" type="file" name="picture" accept="image/gif, image/jpeg, image/png">
+                        <input type="text" name="picture_id" value="{{ $question->picture_id }}" style="display: none;">
+                        <input id="imgInp" type="file" name="picture" class="p-10" accept="image/gif, image/jpeg, image/png">
                       </div>
                     @endif
                     @if(isset($question->voice_id))                    
@@ -44,7 +46,8 @@
                         <audio controls>
                           <source src="{{ $question->voice['path'] }}">
                         </audio>
-                        <input id="imgInp" type="file" name="picture" accept="image/gif, image/jpeg, image/png">
+                        <input type="text" name="voice_id" value="{{ $question->voice_id }}" style="display: none;">
+                        <input id="imgInp" type="file" class="p-10" name="voice" accept=".mp3,audio/*">
                       </div>
                     @endif
                     <div class="form-group">
@@ -55,7 +58,8 @@
                       <label for="ansers">@lang('question.table.answers')(Check for the correct answer) *</label>
                       @foreach ($question->answers as $key => $answer)
                       <div class="form-answer">
-                        <input type="radio" name="correct_answer"  class="form-radio" {{ $answer->correct_flag == '1' ? 'checked' : '' }} value="answer1">
+                      <input type="radio" name="correct_answer"  class="form-radio" {{ $answer->correct_flag == '1' ? 'checked' : '' }} value="{{ $key}}">
+                        <input type="text" name="answer_id[]" value="{{ $answer->id }}" style="display: none;">
                         <input type="text" name="answers[]" class="form-control" value="{{ $answer->content }}">
                       </div>
                       @endforeach
@@ -67,13 +71,15 @@
                   @case(7)                  
                     <div class="form-group">
                       <label for="group_question">@lang('question.table.group')</label>
+                      <input type="text" name="group_id" value="{{ $group->id }}" style="display: none;">
                       <input type="text" name="group_question" class="form-control" value="{{ $group->type }}">
                     </div>
                     @if(isset($group->picture_id))                    
                       <div class="form-group">
                         <label for="picture">@lang('question.table.picture')</label>
                         <img src="{{ $group->picture->path }}" id="image-preview" class="question-img" alt="Question Image">
-                        <input id="imgInp" type="file" name="picture" accept="image/gif, image/jpeg, image/png">
+                        <input type="text" name="picture_id" value="{{ $group->picture_id }}" style="display: none;">
+                        <input id="imgInp" type="file" name="picture" class="p-10" accept="image/gif, image/jpeg, image/png">
                       </div>
                     @endif
                     @if(isset($group->voice_id))
@@ -82,19 +88,22 @@
                         <audio controls>
                           <source src="{{ $group->voice['path'] }}">
                         </audio>
-                        <input id="imgInp" type="file" name="picture" accept="image/gif, image/jpeg, image/png">
+                        <input type="text" name="voice_id" value="{{ $group->voice_id }}" style="display: none;">
+                        <input id="imgInp" type="file" name="voice" class="p-10" accept=".mp3,audio/*">
                       </div>
                     @endif
                     @foreach ($group->questions as $key => $question)
                       <div class="form-group">
                         <label for="content">@lang('question.table.question') *</label>
+                        <input type="text" name="question_id[]" value="{{ $question->id }}" style="display: none;">
                         <input type="text" name="content[]" class="form-control" value="{{ $question->content }}">
                       </div>
                       <div class="form-group">
                         <label for="ansers">@lang('question.table.answers')(Check for the correct answer) *</label>
                         @foreach ($question->answers as $a_key => $answer)
                         <div class="form-answer">
-                          <input type="radio" name="correct_answers[{{ $key}}]" class="form-radio" {{ $answer->correct_flag == '1' ? 'checked' : '' }} value="answers{{ $a_key}}">
+                          <input type="text" name="answer_id[{{ $key}}][]" value="{{ $answer->id }}" style="display: none;">
+                          <input type="radio" name="correct_answers[{{ $key}}]" class="form-radio" {{ $answer->correct_flag == '1' ? 'checked' : '' }} value="{{ $a_key}}">
                           <input type="text" name="answers[{{ $key}}][]" class="form-control" value="{{ $answer->content }}">
                         </div>
                         @endforeach
