@@ -64,7 +64,6 @@ class QuestionController extends Controller
     public function store(Request $request, $id)
     {
         $data = $request->all();
-        dd($data);
         if (!empty($this->questionService->store($data, $id))) {
             return redirect()->route('admin.test.questions', $id)->with('success', trans('common.message.create_success'));
         }

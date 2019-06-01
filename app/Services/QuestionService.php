@@ -65,10 +65,9 @@ class QuestionService
                         'content' => $content,
                         'group_id' => $group->id
                     ]);
-                    $this->createAnswer($question->id, $data['answer1'][$key], isset($data['correct_answer1'][$key]) ? 1 : 0);
-                    $this->createAnswer($question->id, $data['answer2'][$key], isset($data['correct_answer2'][$key]) ? 1 : 0);
-                    $this->createAnswer($question->id, $data['answer3'][$key], isset($data['correct_answer3'][$key]) ? 1 : 0);
-                    $this->createAnswer($question->id, $data['answer4'][$key], isset($data['correct_answer4'][$key]) ? 1 : 0);
+                    foreach ($data['answer'][$key] as $aKey => $answer) {
+                        $this->createAnswer($question->id, $answer, ($data['correct_answer'][$key] == $aKey) ? 1 : 0);
+                    }
                 }
             } else {
                 $question = Question::create([
@@ -78,11 +77,8 @@ class QuestionService
                     'picture_id' => isset($picture) ? $picture->id : null,
                     'voice_id' => isset($voice) ? $voice->id : null,
                 ]);
-                $this->createAnswer($question->id, $data['answer1'], ($data['correct_answer'] == 'answer1') ? 1 : 0);
-                $this->createAnswer($question->id, $data['answer2'], ($data['correct_answer'] == 'answer2') ? 1 : 0);
-                $this->createAnswer($question->id, $data['answer3'], ($data['correct_answer'] == 'answer3') ? 1 : 0);
-                if (isset($data['answer4'])) {
-                    $this->createAnswer($question->id, $data['answer4'], ($data['correct_answer'] == 'answer4') ? 1 : 0);
+                foreach ($data['answer'] as $key => $answer) {
+                    $this->createAnswer($question->id, $answer, ($data['correct_answer'] == $key) ? 1 : 0);
                 }
             }
             DB::commit();
