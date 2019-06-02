@@ -3,11 +3,15 @@
 	<div id="wrapper">
 		<div id="header" style="position: relative;">
 			<ul id="top-menu">
-       <li><a href="{{ route('home')}}">Home</a></li>
+       			<li><a href="{{ route('home')}}">HOME</a></li>
 				<li>|</li>
-				<li><a href="#">LOG IN</a></li>
-				<li>|</li>					
-				<li class="block-start block-stop"><a href="#">SIGN UP</a></li>
+				@if (\Auth::user())
+					<li><a href="{{ route('logout') }}">LOG OUT</a></li>
+				@else					
+					<li><a href="{{ route('login') }}">LOG IN</a></li>
+					<li>|</li>					
+					<li class="block-start block-stop"><a href="{{ route('register') }}">SIGN UP</a></li>
+				@endif
 			</ul>
 		<a id="main-logo" href="{{ route('home')}}">
 			<img src="public/template/logo.png" alt="TEOIC® Online Practice">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -39,6 +40,31 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+
+    /**
+     * Get a form for registration request.
+     *
+     * @param array $data data
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */  
+    function showRegisterForm()
+    {
+        return view('auth.register');
+    }
+
+    /**
+     * Get a form for registration request.
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */  
+    function handleRegister(Request $request)
+    {
+        dd($request->all());
+    }
+
 
     /**
      * Get a validator for an incoming registration request.

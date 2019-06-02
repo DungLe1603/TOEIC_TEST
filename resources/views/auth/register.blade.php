@@ -1,10 +1,10 @@
-@extends('user.module.master')
+@extends('public.module.master')
 @section('content')
-  <div class="content-wrapper p-60">
-    <section class="content">
+  <div id="wrapper">
+    <section id="page-wrap">
       <div class="row">
         <div class="col-md-12">
-          @include('user.module.message')
+          @include('admin.module.message')
         </div>
       </div>
       <div class="row">
@@ -13,7 +13,7 @@
             <div class="box-header with-border">
             <h3 class="box-title">@lang('user.register_account')</h3>
             </div>
-            <form method="POST" role="form" enctype="multipart/form-data" action="{{ route('user.register') }}">
+            <form method="POST" role="form" enctype="multipart/form-data" action="{{ route('register') }}">
               @csrf
               <div class="box-body row">
                 <div class="col-md-6">
@@ -28,9 +28,6 @@
                     <label for="exampleInputGender">@lang('user.table.gender')</label>
                     <select name="gender" class="form-control">
                       <option value="">@lang('user.select')</option>
-                      <option value="{{ \App\Models\Profile::OTHER }}">@lang('user.gender.other')</option>
-                      <option value="{{ \App\Models\Profile::MALE }}">@lang('user.gender.male')</option>
-                      <option value="{{ \App\Models\Profile::FEMALE }}">@lang('user.gender.female')</option>
                     </select>
                     @if ($errors->has('gender'))
                       <span class="help-block">{{ $errors->first('gender') }}</span>
