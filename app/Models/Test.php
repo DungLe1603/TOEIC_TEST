@@ -24,4 +24,14 @@ class Test extends Model
     {
         return $this->hasMany(Question::class);
     }
+
+    /**
+    * Test has many test result
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+    public function results()
+    {
+        return $this->hasMany(Result::class);
+    }
 }

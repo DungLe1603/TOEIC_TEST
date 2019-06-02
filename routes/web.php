@@ -32,5 +32,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Adm
     Route::post('questions/{question_id}', 'QuestionController@update') -> name('questions.update');
     Route::get('questions/{question_id}', 'QuestionController@destroy') -> name('questions.destroy');
     Route::resource('tests', 'TestController');
+    Route::get('results', 'ResultController@index') -> name('results');
     // Route::resource('comments', 'CommentController')->only('index', 'show', 'destroy');
 });
