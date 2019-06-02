@@ -53,4 +53,14 @@ class User extends Model
         }
         return asset('upload/' . $imageName);
     }
+
+    /**
+    * User has many test result
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+    public function results()
+    {
+        return $this->hasMany(Result::class);
+    }
 }

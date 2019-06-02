@@ -59,7 +59,7 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li class="active"><a href="#"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.test_result.list')</a></li>
+                <li class="active"><a href="{{ route('admin.results') }}"><i class="fa fa-circle-o"></i> @lang('admin.sidebar.test_result.list')</a></li>
             </ul>
         </li>
       </ul>
