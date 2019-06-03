@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Requests\RegisterRequest;
+use App\Services\UserService;
 
 class RegisterController extends Controller
 {
@@ -23,7 +24,19 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    private $userService;
+
+    /**
+    * Contructer
+    *
+    * @param App\Service\UserService $userService userService
+    *
+    * @return void
+    */
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
 
     /**
      * Where to redirect users after registration.
@@ -52,8 +65,13 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */  
     function handleRegister(RegisterRequest $request)
-    {
-        dd($request->all());
+    {    
+        $data = $request->all();
+        // dd($data);
+        if (!empty($this->userService->register($data))) {
+            return redirect()->route('login');
+        }
+        return redirect()->route('register')->with('error', trans('common.message.register_error'));
     }
 
     /**

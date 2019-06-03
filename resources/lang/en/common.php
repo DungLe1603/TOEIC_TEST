@@ -36,5 +36,6 @@ return [
         'block_error' => 'Block fail',
         'restore_success' => 'Restore successfully',
         'restore_error' => 'restore fail',
+        'register_error' => 'Register faily, please check again!'
     ],
 ];
