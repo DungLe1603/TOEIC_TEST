@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Profile;
+use App\Models\User;
 
 class RegisterRequest extends FormRequest
 {
@@ -26,12 +26,11 @@ class RegisterRequest extends FormRequest
     {
         return [
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:5|max:255|',
+            'password' => 'required|min:6',
             'confirm_password' => 'required|same:password',
             'name' => 'required',
-            'gender' => 'in:'.Profile::OTHER.','.Profile::MALE.','.Profile::FEMALE.'',
-            'address' => 'required|max:255',
-            'phonenumber' => 'required|numeric|min:10',
+            'birthday' => 'required',
+            'gender' => 'nullable|in:'.User::MALE.','.User::FEMALE.'',
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

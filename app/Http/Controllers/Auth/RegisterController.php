@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Requests\RegisterRequest;
 
 class RegisterController extends Controller
 {
@@ -32,16 +33,6 @@ class RegisterController extends Controller
     protected $redirectTo = '/home';
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
-    /**
      * Get a form for registration request.
      *
      * @param array $data data
@@ -60,11 +51,10 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Contracts\Validation\Validator
      */  
-    function handleRegister(Request $request)
+    function handleRegister(RegisterRequest $request)
     {
         dd($request->all());
     }
-
 
     /**
      * Get a validator for an incoming registration request.
