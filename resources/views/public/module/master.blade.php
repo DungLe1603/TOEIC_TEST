@@ -12,6 +12,13 @@
     <link rel="stylesheet" href="public/css/shop-homepage.css">
     <link rel="stylesheet" href="public/css/my.css">
 	<link rel="stylesheet" type="text/css" href="public/css/toeic.css">
+	<script type="text/javascript" src="public/template/jquery-1.4.2.min.js.download"></script>
+	<script type="text/javascript" src="public/template/jquery.cookie.js.download"></script>
+	<script type="text/javascript" src="public/template/jquery-ui-1.8.18.custom.min.js.download"></script>
+	<script type="text/javascript" src="public/template/jquery.ui.datepicker-pl.js.download"></script>
+	<script type="text/javascript" src="public/template/jquery.anythingslider.min.js.download"></script>   		
+	<script type="text/javascript" src="public/template/jquery.fancybox-1.3.1.pack.js.download"></script>
+	<script type="text/javascript" src="public/template/jquery.jplayer.min.js.download"></script>
 
 </head>
 <body>
@@ -31,13 +38,6 @@
 	<script src="public/template/reengageio.min.js.download"></script>
 	<script type="text/javascript" async="" src="public/template/ga.js.download"></script>
 	<script type="text/javascript">var audioSwfUrl = '/res/flash/audioplayer.swf';</script>
-	<script type="text/javascript" src="public/template/jquery-1.4.2.min.js.download"></script>
-	<script type="text/javascript" src="public/template/jquery.cookie.js.download"></script>
-	<script type="text/javascript" src="public/template/jquery-ui-1.8.18.custom.min.js.download"></script>
-	<script type="text/javascript" src="public/template/jquery.ui.datepicker-pl.js.download"></script>
-	<script type="text/javascript" src="public/template/jquery.anythingslider.min.js.download"></script>   		
-	<script type="text/javascript" src="public/template/jquery.fancybox-1.3.1.pack.js.download"></script>
-	<script type="text/javascript" src="public/template/jquery.jplayer.min.js.download"></script>
 	<script type="text/javascript" src="public/template/toeic.js.download"></script>
 	<script src="public/template/f.txt"></script>
 </body>

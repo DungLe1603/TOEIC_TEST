@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Requests\RegisterRequest;
+use App\Services\UserService;
 
 class RegisterController extends Controller
 {
@@ -21,7 +24,19 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    private $userService;
+
+    /**
+    * Contructer
+    *
+    * @param App\Service\UserService $userService userService
+    *
+    * @return void
+    */
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
 
     /**
      * Where to redirect users after registration.
@@ -31,13 +46,29 @@ class RegisterController extends Controller
     protected $redirectTo = '/home';
 
     /**
-     * Create a new controller instance.
+     * Get a form for registration request.
      *
-     * @return void
+     * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function __construct()
+    function showRegisterForm()
     {
-        $this->middleware('guest');
+        return view('auth.register');
+    }
+
+    /**
+     * Get a form for registration request.
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */  
+    function handleRegister(RegisterRequest $request)
+    {
+        $data = $request->all();
+        if (!empty($this->userService->register($data))) {
+            return redirect()->route('login');
+        }
+        return redirect()->route('register')->with('error', trans('common.message.register_error'));
     }
 
     /**

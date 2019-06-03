@@ -120,13 +120,8 @@ class UserService
      */
     public function update(array $data, User $user)
     {
-        // dd($data['role_id']);
         DB::beginTransaction();
         try {
-            // if ($user->role_id == Role::ADMIN_ROLE && ($data['role_id'] != Role::ADMIN_ROLE || Auth::user()->id != $user->id)) {
-            //     session()->flash('error', trans('user.edit_error'));
-            //     return false;
-            // }
             $inputUser = [
                 'name' => $data['name'],
                 'gender' => $data['gender'],
@@ -137,7 +132,6 @@ class UserService
                 $inputUser['avatar'] = $this->uploadAvatar($data['avatar']);
                 File::delete(public_path($user->avatar));
             }
-            // dd($inputUser['role_id']);
             $user->update($inputUser);
             DB::commit();
             return $user;
@@ -212,13 +206,9 @@ class UserService
                 'role_id' => Role::CUSTOMER_ROLE,
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
-            ]);
-            Profile::create([
-                'user_id' => $user['id'],
                 'name' => $data['name'],
+                'birthday' => $data['birthday'],
                 'gender' => $data['gender'],
-                'address' => $data['address'],
-                'phonenumber' => $data['phonenumber'],
                 'avatar' => isset($data['avatar']) ? $this->uploadAvatar($data['avatar']) : null,
             ]);
             DB::commit();

@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/user';
+    // protected $redirectTo = '/user';
 
     /**
      * Create a new controller instance.
@@ -61,7 +61,11 @@ class LoginController extends Controller
     {
         $data = $request->except(['_token']);
         if (app(LoginService::class)->login($data)) {
-            return redirect()->route('admin.users.index');
+            if (\Auth::user()->role_id == 1) {
+                return redirect()->route('admin.users.index');
+            } else {
+                return redirect()->route('home');
+            }
         }
         return redirect()->route('login');
     }

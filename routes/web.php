@@ -18,9 +18,13 @@ Route::group(['namespace' => 'User'],  function () {
     Route::get('/toeic-tips', 'PageController@toeicTip')->name('tips');
     Route::get('/tests', 'TestController@index')->name('tests.index');
 });
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@handleLogin')->name('login');
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::group(['namespace' => 'Auth'],  function () {
+    Route::get('login', 'LoginController@showLoginForm')->name('login');
+    Route::post('login', 'LoginController@handleLogin')->name('login');
+    Route::get('logout', 'LoginController@logout')->name('logout');
+    Route::get('register', 'RegisterController@showRegisterForm')->name('register');
+    Route::post('register', 'RegisterController@handleRegister')->name('register');
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Admin', 'as' => 'admin.'], function () {
     Route::resource('users', 'UserController');

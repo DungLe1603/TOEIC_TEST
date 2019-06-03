@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="limiter">
-		<div class="container-login100">
+		<div class="container-login100" style="background:  url('{{ asset("auth/images/background.jpg") }}'); background-size: cover">
 			<div class="wrap-login100">
 				<form method="POST" action="{{ route('login') }}" class="login100-form validate-form">
 					@csrf
@@ -41,15 +41,14 @@
 							<div class="login100-form-bgbtn"></div>
 								<button class="login100-form-btn">@lang('login.login')</button>
 							</div>
-							<div>
+							{{-- <div>
 								<a class="reset_pass" href="#">@lang('login.forget_password')</a>
-								{{-- <a class="reset_pass" href="{{route('password.request')}}">Quên mật khẩu?</a> --}}
-							</div>
+							</div> --}}
 						</div>
-					<div class="box-social text-uppercase p-t-30">
+					{{-- <div class="box-social text-uppercase p-t-30">
 						<a href="{{url('facebook/redirect')}}" class="btn btn-success">@lang('login.facebook')</a>
 						<a href="{{url('google/redirect')}}" class="btn btn-danger">@lang('login.google+')</a>
-					</div>
+					</div> --}}
 				</form>
 			</div>
 		</div>

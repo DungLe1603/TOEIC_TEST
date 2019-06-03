@@ -192,17 +192,6 @@ form,fieldset {
 	border: none;
 }
 
-input[type="text"],input[type="password"],select,textarea {
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 12px;
-	color: #1E3C54;
-	border: 1px solid #9EB9CC;
-	background-color: #ffffff;
-	padding: 3px 1px;
-	width: 190px;
-	float: left;
-}
-
 textarea {
 	width: 335px;
 	height: 150px;
@@ -213,33 +202,6 @@ textarea.smaller {
 	height: 120px;
 }
 
-input[type="text"]:focus,input[type="password"]:focus,select:focus,textarea:focus
-	{
-	background-color: #DCEFFD;
-}
-
-input[type="text"],input[type="password"] {
-	width: 186px;
-	padding: 4px 1px;
-}
-
-label {
-	width: 150px;
-	text-align: right;
-	margin-right: 10px;
-	float: left;
-	line-height: 30px;
-}
-
-fieldset.long_label label {
-	width: 140px;
-}
-
-fieldset.long_label label.data,label.data {
-	text-align: left;
-	width: 250px;
-}
-
 div.spacer {
 	clear: both;
 	height: 4px;
@@ -247,25 +209,6 @@ div.spacer {
 
 fieldset.bb {
 	text-align: right;
-}
-
-input[type="submit"] {
-	color: #ffffff;
-	background-color: #024280;
-	background-image: url('../gfx/but_blue.png');
-	background-position: center;
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border: none;
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 0 10px;
-	line-height: 26px;
-	height: 26px;
-	text-shadow: rgba(0, 0, 0, 0.2) -1px -1px 0px;
-	cursor:pointer;
 }
 
 input[type="submit"].lightblue {
