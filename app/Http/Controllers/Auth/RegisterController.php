@@ -48,10 +48,8 @@ class RegisterController extends Controller
     /**
      * Get a form for registration request.
      *
-     * @param array $data data
-     *
      * @return \Illuminate\Contracts\Validation\Validator
-     */  
+     */
     function showRegisterForm()
     {
         return view('auth.register');
@@ -65,9 +63,8 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */  
     function handleRegister(RegisterRequest $request)
-    {    
+    {
         $data = $request->all();
-        // dd($data);
         if (!empty($this->userService->register($data))) {
             return redirect()->route('login');
         }

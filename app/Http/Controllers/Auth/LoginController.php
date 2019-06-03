@@ -61,7 +61,7 @@ class LoginController extends Controller
     {
         $data = $request->except(['_token']);
         if (app(LoginService::class)->login($data)) {
-            if (\Auth::user()->role_id == 1) {                
+            if (\Auth::user()->role_id == 1) {
                 return redirect()->route('admin.users.index');
             } else {
                 return redirect()->route('home');
