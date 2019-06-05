@@ -156,7 +156,7 @@
                       @foreach ($groupPart7 as $group)
                         <div class="show-direction">
                           <p><strong>{{ trans('test.following_direction', ['num1' => $number, 'num2' => $number+count($group->questions)-1, 'type' => $group->type]) }}</strong></p>
-                          <img src="{{ $group->picture->path }}" class="question-img" alt="Question Image">
+                          <img src="{{ $group->picture->path }}" alt="Question Image">
                         </div>
                         @foreach ($group->questions as $question)
                           <div class="show-question">
