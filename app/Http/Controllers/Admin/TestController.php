@@ -47,14 +47,19 @@ class TestController extends Controller
      */
     public function show(Test $test)
     {
-        $questions = [];
+        // $questions = [];
         $parts =Part::all();
-        foreach ($parts as $key => $part) {
-            $questions[$key] = $this->testService->getQuestionInPart($test->id, $part->name);
-        }
+        // foreach ($parts as $key => $part) {
+        //     $questions[$key] = $this->testService->getQuestionInPart($test->id, $part->name);
+        // }
+        $questionPart1 = $this->testService->getQuestionInPart($test->id, 'Part 1');
+        $questionPart2 = $this->testService->getQuestionInPart($test->id, 'Part 2');
+        $groupPart3 = $this->testService->getGroupInPart($test->id, 'Part 3');
+        $groupPart4 = $this->testService->getGroupInPart($test->id, 'Part 4');
+        $questionPart5 = $this->testService->getQuestionInPart($test->id, 'Part 5');
         $groupPart6 = $this->testService->getGroupInPart($test->id, 'Part 6');
         $groupPart7 = $this->testService->getGroupInPart($test->id, 'Part 7');
-        return view('admin.test.detail', compact('test', 'parts', 'questions', 'groupPart6', 'groupPart7'));
+        return view('admin.test.detail', compact('test', 'parts', 'questionPart1', 'questionPart2', 'groupPart3', 'groupPart4', 'questionPart5','groupPart6', 'groupPart7'));
     }
 
     /**
