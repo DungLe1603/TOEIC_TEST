@@ -51,13 +51,15 @@ class TestService
      */
     public function getGroupInPart($testId, $part)
     {
-        return GroupQuestion::select('id', 'type', 'picture_id')
+        return GroupQuestion::select('id', 'type', 'picture_id', 'voice_id')
             ->whereHas('questions', function ($query1) use ($testId, $part) {
                 $query1->where('test_id', $testId)
                     ->whereHas('part', function ($query2) use ($part) {
                         $query2->where('name', $part);
                     });
-            })->get();
+            })
+            ->with('picture', 'voice')
+            ->get();
     }
 
     /**

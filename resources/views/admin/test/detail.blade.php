@@ -24,7 +24,8 @@
                 $number = 1;
             @endphp
             <div class="box-body">
-              <h4><strong>{{ trans('test.skill.listening') }}</strong></h4>
+              <h3><strong>{{ trans('test.skill.listening') }}</strong></h3>
+              <p></p>
               @foreach ($parts as $p_key => $part)
                 @if ($part->skill->name == 'Listening')                    
                   <div class="show-part">
@@ -32,7 +33,7 @@
                   </div>
                   @switch($part->name)
                     @case('Part 1')
-                      @foreach ($questions[$p_key] as $q_key=> $question)     
+                      @foreach ($questionPart1 as $q_key=> $question)     
                       <div class="show-question">
                         <p>{{ $number++ }}</p>
                         @if(isset($question->picture_id))
@@ -47,7 +48,7 @@
                       @endforeach
                       @break
                     @case('Part 2')
-                      @foreach ($questions[$p_key] as $q_key=> $question)
+                      @foreach ($questionPart2 as $q_key=> $question)
                         <div class="show-question">
                           <p>{{ $number++ }} {{ $question->content }}</p>
                           @if(isset($question->voice_id))
@@ -59,18 +60,50 @@
                       @endforeach
                       @break
                     @case('Part 3')
-                    @case('Part 4')
-                      @foreach ($questions[$p_key] as $q_key=> $question)
-                        <div class="show-question">
-                          <p>{{ $number++ }} {{ $question->content }}</p>
+                      @foreach ($groupPart3 as $group)
+                        <div class="show-direction">
+                            <p><strong>{{ trans('test.following_direction', ['num1' => $number, 'num2' => $number+count($group->questions)-1, 'type' => $group->type]) }}</strong></p>
                         </div>
-                        <div class="show-answer row">
-                          @foreach ($question->answers as $answer)
-                            <div class="col-md-3">
-                              <p>{{ $answer->content }}</p>
+                        @if(isset($group->voice_id))
+                          <audio controls>
+                            <source src="{{ $group->voice['path'] }}">
+                          </audio>
+                        @endif
+                        @foreach ($group->questions as $question)
+                          <div class="show-question">
+                              <p>{{ $number++ }} {{ $question->content }}</p>
                             </div>
-                          @endforeach
+                            <div class="show-answer row">
+                              @foreach ($question->answers as $answer)
+                                <div class="col-md-3">
+                                  <p>{{ $answer->content }}</p>
+                                </div>
+                              @endforeach
+                            </div>
+                        @endforeach
+                      @endforeach
+                    @case('Part 4')                          
+                      @foreach ($groupPart4 as $group)
+                        <div class="show-direction">
+                            <p><strong>{{ trans('test.following_direction', ['num1' => $number, 'num2' => $number+count($group->questions)-1, 'type' => $group->type]) }}</strong></p>
                         </div>
+                        @if(isset($group->voice_id))
+                          <audio controls>
+                            <source src="{{ $group->voice['path'] }}">
+                          </audio>
+                        @endif
+                        @foreach ($group->questions as $question)
+                          <div class="show-question">
+                              <p>{{ $number++ }} {{ $question->content }}</p>
+                            </div>
+                            <div class="show-answer row">
+                              @foreach ($question->answers as $answer)
+                                <div class="col-md-3">
+                                  <p>{{ $answer->content }}</p>
+                                </div>
+                              @endforeach
+                            </div>
+                        @endforeach
                       @endforeach
                       @break
                     @default
@@ -80,7 +113,7 @@
               @endforeach
             </div>
             <div class="box-body">
-              <h4><strong>{{ trans('test.skill.reading') }}</strong></h4>
+              <h3><strong>{{ trans('test.skill.reading') }}</strong></h3>
               @foreach ($parts as $p_key => $part)
                 @if ($part->skill->name == 'Reading')                    
                   <div class="show-part">
@@ -88,7 +121,7 @@
                   </div>
                   @switch($part->name)                  
                     @case('Part 5')
-                      @foreach ($questions[$p_key] as $q_key=> $question)
+                      @foreach ($questionPart5 as $q_key=> $question)
                         <div class="show-question">
                           <p>{{ $number++ }} {{ $question->content }}</p>
                         </div>

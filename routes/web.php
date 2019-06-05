@@ -17,6 +17,7 @@ Route::group(['namespace' => 'User'],  function () {
     Route::get('/score-lever', 'PageController@scoreLever')->name('lever');
     Route::get('/toeic-tips', 'PageController@toeicTip')->name('tips');
     Route::get('/tests', 'TestController@index')->name('tests.index');
+    Route::get('/tests/{id}/detail', 'TestController@detail')->name('test.detail');
 });
 Route::group(['namespace' => 'Auth'],  function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');

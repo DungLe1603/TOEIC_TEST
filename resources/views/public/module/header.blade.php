@@ -14,7 +14,7 @@
 				@endif
 			</ul>
 		<a id="main-logo" href="{{ route('home')}}">
-			<img src="public/template/logo.png" alt="TEOIC® Online Practice">
+			<img src="{{ asset('public/template/logo.png') }}" alt="TEOIC® Online Practice">
 			<div>Listening and Reading Online Practice Test</div>
 		</a>
 		<div class="cf"></div>
