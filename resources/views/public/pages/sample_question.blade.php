@@ -38,7 +38,7 @@
               <td>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;</td>
               <td>
                 <p><strong></strong></p>
-                <audio controls><source src="public/audio/bell.mp3"></audio>
+                <audio controls><source src="public/audio/listening_direction.mp3"></audio>
               </td>
             </tr>
           </tbody>
@@ -56,7 +56,7 @@
                 <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td>
                   <audio controls>
-                    <source src="public/audio/bell.mp3">
+                    <source src="public/audio/example.mp3">
                   </audio>
                   <p></p>
                 </td>
