@@ -7,10 +7,10 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/template/jquery-ui-1.8.18.custom.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/template/jquery.fancybox-1.3.1.css') }}">
 	<link rel="stylesheet" href="{{ asset('public/template/jplayer.blue.monday.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/css/shop-homepage.css') }}">
     <link rel="stylesheet" href="{{ asset('public/css/my.css') }}">
+	<link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/toeic.css') }}">
 	<script type="text/javascript" src="{{ asset('public/template/jquery-1.4.2.min.js.download') }}"></script>
 	<script type="text/javascript" src="{{ asset('public/template/jquery.cookie.js.download') }}"></script>

@@ -38,11 +38,12 @@ class TestController extends Controller
         $tests = $this->testService->getTests();
         return view('public.test.list', compact('tests'));
     }
-    
+
     /**
     * Show test detail for doing
     *
     * @param int $id id
+    *
     * @return \Illuminate\Http\Response
     */
     public function detail($id)
@@ -57,5 +58,19 @@ class TestController extends Controller
         $groupPart6 = $this->testService->getGroupInPart($test->id, 'Part 6');
         $groupPart7 = $this->testService->getGroupInPart($test->id, 'Part 7');
         return view('public.test.detail', compact('test', 'parts', 'questionPart1', 'questionPart2', 'groupPart3', 'groupPart4', 'questionPart5', 'groupPart6', 'groupPart7'));
+    }
+    
+    /**
+    * Handle test detail for doing
+    *
+    * @param Request $request request
+    * @param int $id id
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function handleTest(Request $request, $id)
+    {
+        $data = $request->all();
+        dd($data);
     }
 }
