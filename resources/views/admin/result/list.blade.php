@@ -31,7 +31,7 @@
                     <td>{{ $result->listening_score }}</td>
                     <td>{{ $result->reading_score }}</td>
                     <td>{{ $result->listening_score + $result->reading_score }}</td>
-                    <td>{{ $result->created_at->format('d-m-Y') }}</td>
+                    <td>{{ date('d-m-Y', strtotime($result->created_at)) }}</td>
                   </tr>
                 @endforeach
               </table>

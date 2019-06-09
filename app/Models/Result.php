@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Result extends Model
 {
+    public $timestamps = false;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'test_id', 'user_id', 'listening_score', 'reading_score',
+    ];
     /**
     * Result belongs to user
     *

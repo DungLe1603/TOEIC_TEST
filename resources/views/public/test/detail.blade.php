@@ -110,7 +110,7 @@
                               @endif
                               <div class="form-answer">
                                 @foreach ($question->answers as $answer)
-                                  <input class="inline-block" type="radio" name="answer[{{$number}}]" value="{{ $answer->id}}"><span class="answer-space">{{ $answer->content}}</span>
+                                  <input class="inline-block" type="radio" name="listeing_answer[{{$number}}]" value="{{ $answer->id}}"><span class="answer-space">{{ $answer->content}}</span>
                                 @endforeach
                               </div>
                             </div>
@@ -128,7 +128,7 @@
                               @endif
                               <div class="form-answer">
                                 @foreach ($question->answers as $answer)
-                                  <input class="inline-block" type="radio" name="answer[{{$number}}]" value="{{ $answer->id}}"><span class="answer-space">{{ $answer->content}}</span>
+                                  <input class="inline-block" type="radio" name="listeing_answer[{{$number}}]" value="{{ $answer->id}}"><span class="answer-space">{{ $answer->content}}</span>
                                 @endforeach
                               </div>
                             </div>
@@ -152,7 +152,7 @@
                               <div class="show-answer row">
                                 @foreach ($question->answers as $answer)
                                   <div class="col-md-3">
-                                    <input class="inline-block" type="radio" name="answer[{{$number}}]" value="{{ $answer->id}}">
+                                    <input class="inline-block" type="radio" name="listeing_answer[{{$number}}]" value="{{ $answer->id}}">
                                     <span>{{ $answer->content}}</span>
                                   </div>
                                 @endforeach
@@ -178,7 +178,7 @@
                               <div class="show-answer row">
                                 @foreach ($question->answers as $answer)
                                   <div class="col-md-3">
-                                    <input class="inline-block" type="radio" name="answer[{{$number}}]" value="{{ $answer->id}}">
+                                    <input class="inline-block" type="radio" name="listeing_answer[{{$number}}]" value="{{ $answer->id}}">
                                     <span>{{ $answer->content}}</span>
                                   </div>
                                 @endforeach
@@ -210,7 +210,7 @@
                             <div class="show-answer row">
                               @foreach ($question->answers as $answer)
                                 <div class="col-md-3">
-                                  <input class="inline-block" type="radio" name="answer[{{$number}}]" value="{{ $answer->id}}">
+                                  <input class="inline-block" type="radio" name="reading_answer[{{$number}}]" value="{{ $answer->id}}">
                                   <span>{{ $answer->content}}</span>                                  
                                 </div>
                               @endforeach
@@ -229,7 +229,7 @@
                                 <div class="col-md-1">{{ $number++ }}</div>
                                 @foreach ($question->answers as $answer)
                                   <div class="col-md-2">
-                                    <input class="inline-block" type="radio" name="answer[{{$number}}]" value="{{ $answer->id}}">
+                                    <input class="inline-block" type="radio" name="reading_answer[{{$number}}]" value="{{ $answer->id}}">
                                     <span>{{ $answer->content}}</span>                                    
                                   </div>
                                 @endforeach
@@ -251,7 +251,7 @@
                               <div class="show-answer row">
                                 @foreach ($question->answers as $answer)
                                   <div class="col-md-3">
-                                    <input class="inline-block" type="radio" name="answer[{{$number}}]" value="{{ $answer->id}}">
+                                    <input class="inline-block" type="radio" name="reading_answer[{{$number}}]" value="{{ $answer->id}}">
                                     <span>{{ $answer->content}}</span>                                    
                                   </div>
                                 @endforeach

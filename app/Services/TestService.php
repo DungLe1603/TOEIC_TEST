@@ -6,6 +6,9 @@ use App\Models\Test;
 use App\Models\Part;
 use App\Models\GroupQuestion;
 use App\Models\Question;
+use App\Models\Answer;
+use App\Models\Result;
+use App\Models\Score;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -125,5 +128,44 @@ class TestService
             Log::error($e);
         }
         return false;
+    }
+
+    /**
+     * Caculation the score of test.
+     *
+     * @param array $data data
+     * @param int   $id   testId
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function calScore(array $data, $id)
+    {
+        $listeningNum = 0;
+        $readingNum = 0;
+        foreach ($data['listeing_answer'] as $key => $value) {
+            $answer = Answer::find($value);
+            if ($answer->correct_answer == '1') {
+                $listeningNum += 1;
+            }
+        }
+        foreach ($data['reading_answer'] as $key => $value) {
+            $answer = Answer::find($value);
+            if ($answer->correct_flag == '1') {
+                $readingNum += 1;
+            }
+        }
+        $listeningScore = Score::where('number_correct', $listeningNum)->where('skill_id', 1)->first();
+        $readingScore = Score::where('number_correct', $readingNum)->where('skill_id', 1)->first();
+        try {
+            $result = Result::create([
+                'test_id' => $id,
+                'user_id' => \Auth::user()->id,
+                'listening_score' => $readingScore->score,
+                'reading_score' => $readingScore->score,
+            ]);
+        } catch (Exception $e) {
+            Log::error($e);
+        }
+        return $result;
     }
 }
