@@ -26,5 +26,6 @@ return [
         'listening' => 'Listening test',
         'reading' => 'Reading test',
     ],
+    'submit' => 'Submit',
     'following_direction' => 'Questions :num1 - :num2 refer to the following :type.'
 ];

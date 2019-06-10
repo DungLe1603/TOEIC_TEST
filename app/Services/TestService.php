@@ -6,9 +6,13 @@ use App\Models\Test;
 use App\Models\Part;
 use App\Models\GroupQuestion;
 use App\Models\Question;
+use App\Models\Answer;
+use App\Models\Result;
+use App\Models\Score;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class TestService
 {
@@ -125,5 +129,50 @@ class TestService
             Log::error($e);
         }
         return false;
+    }
+
+    /**
+     * Caculation the score of test.
+     *
+     * @param array $data data
+     * @param int   $id   testId
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function calScore(array $data, $id)
+    {
+        // dd($data['listening_answer']);
+        $listeningNum = 0;
+        $readingNum = 0;
+        if (isset($data['listening_answer'])) {            
+            foreach ($data['listening_answer'] as $key => $value) {
+                $answer = Answer::find($value);
+                if ($answer->correct_answer == '1') {
+                    $listeningNum += 1;
+                }
+            }
+        }
+        if (isset($data['reading_answer'])) {            
+            foreach ($data['reading_answer'] as $key => $value) {
+                $answer = Answer::find($value);
+                if ($answer->correct_flag == '1') {
+                    $readingNum += 1;
+                }
+            }
+        }
+        $listeningScore = Score::where('number_correct', $listeningNum)->where('skill_id', 1)->first();
+        $readingScore = Score::where('number_correct', $readingNum)->where('skill_id', 1)->first();
+        try {
+            $result = Result::create([
+                'test_id' => $id,
+                'user_id' => \Auth::user()->id,
+                'listening_score' => $readingScore->score,
+                'reading_score' => $readingScore->score,
+                'created_at' => Carbon::now(),
+            ]);
+        } catch (Exception $e) {
+            Log::error($e);
+        }
+        return $result;
     }
 }
