@@ -12,6 +12,7 @@ use App\Models\Score;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class TestService
 {
@@ -167,6 +168,7 @@ class TestService
                 'user_id' => \Auth::user()->id,
                 'listening_score' => $readingScore->score,
                 'reading_score' => $readingScore->score,
+                'created_at' => Carbon::now(),
             ]);
         } catch (Exception $e) {
             Log::error($e);

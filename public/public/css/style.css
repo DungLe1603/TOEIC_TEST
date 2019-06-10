@@ -111,3 +111,10 @@ p {
 .question-form {
 	margin: 10px 0;
 }
+.show-score {
+    font-size: 16px;
+    padding: 0 8px;
+}
+.form-evaluate {
+    padding: 8px;
+}

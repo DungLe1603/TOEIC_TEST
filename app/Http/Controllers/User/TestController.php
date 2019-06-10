@@ -71,9 +71,6 @@ class TestController extends Controller
     public function handleTest(Request $request, $id)
     {
         $data = $request->all();
-        // if (!empty($this->testService->calScore($data, $id))) {
-        //     return redirect()->route('home');
-        // }
         $result = $this->testService->calScore($data, $id);
         return view('public.result.show', compact('result'));
     }
