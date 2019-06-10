@@ -20,6 +20,7 @@ return [
         'action' => 'ACtion',
     ],
     'message' => [
+        'error' => 'There are something wrong, please check again!',
         'create_success' => 'Create successfully',
         'create_error' => 'Create faily',
         'edit_success' => 'Edit successfully',

@@ -13,7 +13,7 @@ class Result extends Model
      * @var array
      */
     protected $fillable = [
-        'test_id', 'user_id', 'listening_score', 'reading_score',
+        'test_id', 'user_id', 'listening_score', 'reading_score', 'created_at',
     ];
     /**
     * Result belongs to user

@@ -140,18 +140,23 @@ class TestService
      */
     public function calScore(array $data, $id)
     {
+        // dd($data['listening_answer']);
         $listeningNum = 0;
         $readingNum = 0;
-        foreach ($data['listeing_answer'] as $key => $value) {
-            $answer = Answer::find($value);
-            if ($answer->correct_answer == '1') {
-                $listeningNum += 1;
+        if (isset($data['listening_answer'])) {            
+            foreach ($data['listening_answer'] as $key => $value) {
+                $answer = Answer::find($value);
+                if ($answer->correct_answer == '1') {
+                    $listeningNum += 1;
+                }
             }
         }
-        foreach ($data['reading_answer'] as $key => $value) {
-            $answer = Answer::find($value);
-            if ($answer->correct_flag == '1') {
-                $readingNum += 1;
+        if (isset($data['reading_answer'])) {            
+            foreach ($data['reading_answer'] as $key => $value) {
+                $answer = Answer::find($value);
+                if ($answer->correct_flag == '1') {
+                    $readingNum += 1;
+                }
             }
         }
         $listeningScore = Score::where('number_correct', $listeningNum)->where('skill_id', 1)->first();

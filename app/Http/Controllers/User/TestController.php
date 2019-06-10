@@ -59,7 +59,7 @@ class TestController extends Controller
         $groupPart7 = $this->testService->getGroupInPart($test->id, 'Part 7');
         return view('public.test.detail', compact('test', 'parts', 'questionPart1', 'questionPart2', 'groupPart3', 'groupPart4', 'questionPart5', 'groupPart6', 'groupPart7'));
     }
-    
+
     /**
     * Handle test detail for doing
     *
@@ -69,14 +69,12 @@ class TestController extends Controller
     * @return \Illuminate\Http\Response
     */
     public function handleTest(Request $request, $id)
-    {        
+    {
         $data = $request->all();
+        // if (!empty($this->testService->calScore($data, $id))) {
+        //     return redirect()->route('home');
+        // }
         $result = $this->testService->calScore($data, $id);
-        if (!empty($this->testService->calScore($data, $id))) {
-            // return redirect()->route('public.test.detail')->with('error', trans('common.message.error'));
-        }
-        $result = $this->testService->calScore($data, $id);
-        dd($request);
-        // return redirect()->route('public.test.score', compact('result'));
+        return view('public.result.show', compact('result'));
     }
 }

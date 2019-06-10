@@ -13,13 +13,13 @@
 
 Route::group(['namespace' => 'User'],  function () {
     Route::get('/', 'PageController@homePage')->name('home');
-    Route::get('/sample-question', 'PageController@sampleQuestion')->name('sample');
-    Route::get('/score-lever', 'PageController@scoreLever')->name('lever');
-    Route::get('/toeic-tips', 'PageController@toeicTip')->name('tips');
-    Route::get('/tests', 'TestController@index')->name('tests.index');
+    Route::get('sample-question', 'PageController@sampleQuestion')->name('sample');
+    Route::get('score-lever', 'PageController@scoreLever')->name('lever');
+    Route::get('toeic-tips', 'PageController@toeicTip')->name('tips');
+    Route::get('tests', 'TestController@index')->name('tests.index');
     Route::middleware(['auth'])->group(function () {
-        Route::get('/tests/{id}/detail', 'TestController@detail')->name('test.detail');
-        Route::post('/tests/{id}', 'TestController@handleTest')->name('test.doing');
+        Route::get('tests/{id}/detail', 'TestController@detail')->name('test.detail');
+        Route::post('tests/{id}', 'TestController@handleTest')->name('test.doing');
     });
 });
 Route::group(['namespace' => 'Auth'],  function () {
