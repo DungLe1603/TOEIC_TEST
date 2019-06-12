@@ -6,10 +6,25 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Result;
+use App\Services\UserService;
 use App\Http\Requests\User\ProfileRequest;
 
 class UserController extends Controller
 {
+    private $userService;
+
+    /**
+    * Contructer
+    *
+    * @param App\Service\UserService $userService userService
+    *
+    * @return void
+    */
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     /**
     * Show profile
     *
@@ -30,7 +45,7 @@ class UserController extends Controller
     public function updateProfile(Request $request)
     {
         $data = $request->all();
-        dd($data);
+        $user = \Auth::user();
         if (!empty($this->userService->update($data, $user))) {
             return redirect()->route('profile')->with('success', trans('common.message.edit_success'));
         }

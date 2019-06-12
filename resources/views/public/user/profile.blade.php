@@ -8,6 +8,9 @@
 			<div class="box-header with-border">						
 				<button class='btn btn-info'><a> Change password</a></button>
 			</div>
+			<div>
+				@include('admin.module.message')
+			</div>
 			<form method="post" role="form" enctype="multipart/form-data" action="{{ route('profile.update') }}">
 				@csrf
 				<div class="box-body row">
@@ -16,9 +19,12 @@
 							<label>@lang('user.table.email')</label>
 							<input type="text" readonly class="form-control" value="{{ $user->email }}">
 						</div>
+						<div class="form-group none-display">
+							<input type="text" name="role_id" disable class="form-control" value="{{ $user->role_id }}">
+						</div>
 						<div class="form-group">
 							<label for="name">@lang('user.table.name') *</label>
-							<input type="text" name="name" class="form-control" id="exampleInputName" required value="{{ $user->name }}">
+							<input type="text" name="name" class="form-control" required value="{{ $user->name }}">
 							@if ($errors->has('name'))
 								<span class="help-block">{{ $errors->first('name') }}</span>
 							@endif

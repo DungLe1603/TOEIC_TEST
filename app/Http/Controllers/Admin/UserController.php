@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Role;
 use App\Services\UserService;
 use App\Http\Requests\Admin\PostUserRequest;
-use App\Http\Requests\User\ProfileRequest;
+use App\Http\Requests\Admin\PutUserRequest;
 
 class UserController extends Controller
 {
