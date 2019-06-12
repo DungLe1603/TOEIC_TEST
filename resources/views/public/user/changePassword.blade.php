@@ -14,14 +14,23 @@
 					<div class="form-group">
 						<label>@lang('user.table.current_password')</label>
 						<input type="password" name="current_password" class="form-control">
+						@if ($errors->has('current_password'))
+							<span class="help-block">{{ $errors->first('current_password') }}</span>
+						@endif
 					</div>
 					<div class="form-group">
 						<label>@lang('user.table.new_password')</label>
 						<input type="password" name="new_password"  class="form-control">
+						@if ($errors->has('new_password'))
+							<span class="help-block">{{ $errors->first('new_password') }}</span>
+						@endif
 					</div>
 					<div class="form-group">
 						<label>@lang('user.table.confirm_password')</label>
 						<input type="password" name="confirm_password"  class="form-control">
+						@if ($errors->has('confirm_password'))
+							<span class="help-block">{{ $errors->first('confirm_password') }}</span>
+						@endif
 					</div>
 				</div>
 				<div class="box-footer">

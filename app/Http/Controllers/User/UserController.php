@@ -81,7 +81,7 @@ class UserController extends Controller
     * @param PasswordRequest $request $request
     * @return \Illuminate\Http\Response
     */
-    public function changePassword(Request $request)
+    public function changePassword(PasswordRequest $request)
     {
         $data = $request->all();
         $user = \Auth::user();

@@ -6,7 +6,11 @@
 				@if (\Auth::user())
 					<li>
 						<div class="dropdown inline-block">
-							<a class="dropdown-toggle" data-toggle="dropdown">{{ \Auth::user()->name }}</a>
+							<div class="dropdown-toggle" data-toggle="dropdown">
+								<img src="{{ \Auth::user()->avatar }}" class="user-image" alt="User image">
+								<a >{{ \Auth::user()->name }}</a>
+							</div>
+							{{-- <a class="dropdown-toggle" data-toggle="dropdown">{{ \Auth::user()->name }}</a> --}}
 							<div class="dropdown-menu">
 							  <div><a class="header-text dropdown-item" href="{{ route('profile') }}">{{ trans('user.profile') }}</a></div>
 							  <div><a class="header-text dropdown-item" href="{{ route('test.result') }}">{{ trans('user.test_result') }}</a></div>

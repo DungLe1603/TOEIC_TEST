@@ -51,7 +51,7 @@
 						<div class="form-group padding-20">
 							<label for="avatar">@lang('user.table.avatar')</label>
 							<div>
-								<img id="blah" class="avatar" src="/upload/{{ $user->avatar }}" alt="User avatar" />
+								<img id="blah" class="avatar" src="{{ $user->avatar }}" alt="User avatar" />
 							</div>
 							<input type='file' id="imgInp" name="avatar" accept="image/gif, image/jpg, image/jpeg, image/png" />
 							@if ($errors->has('avatar'))

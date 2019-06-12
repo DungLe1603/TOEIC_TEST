@@ -142,3 +142,10 @@ p {
     width: 500px;
     margin: 0 auto;
 }
+.user-image {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -2px;
+}

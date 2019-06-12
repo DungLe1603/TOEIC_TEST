@@ -200,7 +200,9 @@ class UserService
         $user = \Auth::user();
         DB::beginTransaction();
         try {
-            $user->password = bcrypt($data['new_password']);
+            $user->update([
+                'password' => bcrypt($data['new_password']),
+            ]);
             DB::commit();
             return $user;
         } catch (Exception $e) {
