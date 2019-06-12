@@ -138,3 +138,7 @@ p {
     margin: 0 10px;
     padding: 10px;
 }
+.form-password {
+    width: 500px;
+    margin: 0 auto;
+}

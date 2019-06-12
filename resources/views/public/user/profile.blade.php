@@ -6,7 +6,7 @@
     </div>
 		<div class="box box-primary">
 			<div class="box-header with-border">						
-				<button class='btn btn-info'><a> Change password</a></button>
+				<button class='btn btn-info'><a href="{{ route('password') }}"> Change password</a></button>
 			</div>
 			<div>
 				@include('admin.module.message')

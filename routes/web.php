@@ -22,7 +22,8 @@ Route::group(['namespace' => 'User'],  function () {
         Route::post('tests/{id}', 'TestController@handleTest')->name('test.doing');
         Route::get('profile', 'UserController@profile')->name('profile');
         Route::post('edit-profile', 'UserController@updateProfile')->name('profile.update');
-        Route::get('change-password', 'UserController@changePassword')->name('password.change');
+        Route::get('password', 'UserController@formPassword')->name('password');
+        Route::post('change-password', 'UserController@changePassword')->name('password.change');
         Route::get('test-result', 'UserController@testResult')->name('test.result');
     });
 });
