@@ -48,6 +48,7 @@ return [
     ],
     'select' => 'Select',
     'profile' => 'Profile',
+    'test_result' => 'Test result',
     'change_password' => 'Change password',
     'manage_account' => 'Account management',
     'wrong_password' => 'The current password is incorrrect!',

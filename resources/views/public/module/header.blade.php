@@ -3,9 +3,17 @@
 	<div id="wrapper">
 		<div id="header" style="position: relative;">
 			<ul id="top-menu">
-       			<li><a href="{{ route('home')}}">HOME</a></li>
-				<li>|</li>
 				@if (\Auth::user())
+					<li>
+						<div class="dropdown inline-block">
+							<a class="dropdown-toggle" data-toggle="dropdown">{{ \Auth::user()->name }}</a>
+							<div class="dropdown-menu">
+							  <div><a class="header-text dropdown-item" href="{{ route('profile') }}">{{ trans('user.profile') }}</a></div>
+							  <div><a class="header-text dropdown-item" href="{{ route('test.result') }}">{{ trans('user.test_result') }}</a></div>
+							</div>
+						</div>
+					</li>
+					<li>|</li>
 					<li><a href="{{ route('logout') }}">LOG OUT</a></li>
 				@else					
 					<li><a href="{{ route('login') }}">LOG IN</a></li>
