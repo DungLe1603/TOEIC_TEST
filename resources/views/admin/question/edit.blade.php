@@ -123,6 +123,6 @@
       </div>
     </section>
 	</div>
-	<script src="{!! asset('admin/js/create_question.js') !!}"></script>
+	<script src="{!! asset('admin/js/script.js') !!}"></script>
 	<script src="{!! asset('admin/js/show-file.js') !!}"></script>
 @endsection
