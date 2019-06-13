@@ -47,4 +47,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Adm
     Route::get('questions/{question_id}', 'QuestionController@destroy') -> name('questions.destroy');
     Route::resource('tests', 'TestController');
     Route::get('results', 'ResultController@index') -> name('results');
+    Route::post('results', 'ResultController@search') -> name('results.search');
 });

@@ -1,6 +1,5 @@
 @extends('admin.module.master')
 @section('content')
-{{-- @dd($results) --}}
   <div class="content-wrapper">
     <section class="content-header">
       <h1>@lang('result.title')</h1>
@@ -13,6 +12,15 @@
               <h3 class="box-title">@lang('result.list')</h3>
             </div>
             <div class="box-body">
+              <form class="navbar-form" method="POST" role="search" action="{{ route('admin.results.search') }}">
+                @csrf
+                <div class="input-group add-on">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
+                  <input class="form-control" placeholder="Search" name="search_data" id="srch-term" type="text">
+                </div>
+              </form>
               <table class="table table-bordered">
                 <tr>
                   <th style="width: 10px">@lang('result.table.id')</th>
