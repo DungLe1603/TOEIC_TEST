@@ -118,7 +118,7 @@ class UserService
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(array $data, User $user)
+    public function update(array $data, $user)
     {
         DB::beginTransaction();
         try {
@@ -161,37 +161,6 @@ class UserService
     }
 
     /**
-     * Update the profile.
-     *
-     * @param array $data data
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function updateProfile(array $data)
-    {
-        $user = \Auth::user();
-        DB::beginTransaction();
-        try {
-            $inputProfile = [
-                'name' => $data['name'],
-                'gender' => $data['gender'],
-                'address' => $data['address'],
-                'phonenumber' => $data['phonenumber'],
-            ];
-            if (isset($data['avatar'])) {
-                $inputProfile['avatar'] = $this->uploadAvatar($data['avatar']);
-                File::delete(public_path($user->profile->avatar));
-            }
-            $user->profile->update($inputProfile);
-            DB::commit();
-            return $user;
-        } catch (Exception $e) {
-            Log::error($e);
-            DB::rollback();
-        }
-    }
-
-    /**
      * Register a new account
      *
      * @param array $data data
@@ -231,7 +200,9 @@ class UserService
         $user = \Auth::user();
         DB::beginTransaction();
         try {
-            $user->password = bcrypt($data['new_password']);
+            $user->update([
+                'password' => bcrypt($data['new_password']),
+            ]);
             DB::commit();
             return $user;
         } catch (Exception $e) {

@@ -32,6 +32,9 @@ p {
 .inline-block {
     display: inline-block
 }
+.none-display {
+    display: none;
+}
 .box {
     position: relative;
     border-radius: 3px;
@@ -117,4 +120,32 @@ p {
 }
 .form-evaluate {
     padding: 8px;
+}
+.header-text  {
+    padding: 8px 16px;
+}
+.al-success {
+    background-color: #dff0d8;
+    border-radius: 5px;
+    color: #3c763d;
+    margin: 0 10px;
+    padding: 10px;
+}
+.al-error {
+    background-color: #f2dede;
+    border-radius: 5px;
+    color: #a94442;
+    margin: 0 10px;
+    padding: 10px;
+}
+.form-password {
+    width: 500px;
+    margin: 0 auto;
+}
+.user-image {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -2px;
 }

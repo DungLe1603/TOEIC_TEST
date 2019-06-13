@@ -94,9 +94,11 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+            // 'provider' => 'users',
+            // 'table' => 'password_resets',
+            // 'expire' => 60,
         ],
     ],
 

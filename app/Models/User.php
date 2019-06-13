@@ -9,7 +9,6 @@ class User extends Model
     const MALE = 0;
     const FEMALE = 1;
     const OTHER = 2;
-    // use Notifiable;
 
     /**
      * The attributes that are mass assignable.

@@ -37,6 +37,10 @@ return [
         'block_error' => 'Block fail',
         'restore_success' => 'Restore successfully',
         'restore_error' => 'restore fail',
-        'register_error' => 'Register faily, please check again!'
+        'register_error' => 'Register faily, please check again!',
+        'update_profile_success' => 'Update profile successfully!',
+        'update_profile_error' => 'Update profile failed!',
+        'change_password_success' => 'Change password successfully!',
+        'change_password_error' => 'Change password failed!',
     ],
 ];

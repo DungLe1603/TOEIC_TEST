@@ -20,6 +20,11 @@ Route::group(['namespace' => 'User'],  function () {
     Route::middleware(['auth'])->group(function () {
         Route::get('tests/{id}/detail', 'TestController@detail')->name('test.detail');
         Route::post('tests/{id}', 'TestController@handleTest')->name('test.doing');
+        Route::get('profile', 'UserController@profile')->name('profile');
+        Route::post('edit-profile', 'UserController@updateProfile')->name('profile.update');
+        Route::get('password', 'UserController@formPassword')->name('password');
+        Route::post('change-password', 'UserController@changePassword')->name('password.change');
+        Route::get('test-result', 'UserController@testResult')->name('test.result');
     });
 });
 Route::group(['namespace' => 'Auth'],  function () {
