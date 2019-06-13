@@ -156,3 +156,9 @@
   width: 300px;
   margin: 10px;
 }
+.tab-content {
+  padding: 0 20px;
+}
+.tab-link {
+  color: #000;
+}

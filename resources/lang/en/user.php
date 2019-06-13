@@ -40,6 +40,8 @@ return [
     ],
     'edit' => [
         'title' => 'Edit user',
+        'profile' => 'Edit profile',
+        'password' => 'Reset password',
     ],
     'status' => [
         'title' => 'Status',

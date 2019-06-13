@@ -150,14 +150,15 @@ class UserService
      */
     public function destroy($user)
     {
+        if ($user->role_id = Role::ADMIN_ROLE) {
+            session()->flash('error', trans('common.message.permission_denied'));
+            return false;
+        }
         try {
-            if ($user->role_id != Role::ADMIN_ROLE) {
-                return $user->delete();
-            }
+            return $user->delete();
         } catch (Exception $e) {
             Log::error($e);
         }
-        return false;
     }
 
     /**
