@@ -162,3 +162,11 @@
 .tab-link {
   color: #000;
 }
+.navbar-form {
+  padding: 0 0 10px 0;
+}
+#srch-term {
+  width: 300px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

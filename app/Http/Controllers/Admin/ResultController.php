@@ -18,4 +18,26 @@ class ResultController extends Controller
         $results = Result::all();
         return view('admin.result.list', compact('results'));
     }
+
+    /**
+     * Display a listing of search.
+     *
+     * @return \Illuminate\Http\Response
+     */
+     public function search(Request $request)
+     {
+        $searchData = $request->search_data;
+        $userData = Result::whereHas('user', function($subquery) use ($searchData) {
+                        $subquery->where('name', 'LIKE', '%'.$searchData.'%');
+                    })->get();
+        $userTest = Result::whereHas('test', function($subquery) use ($searchData) {
+                        $subquery->where('name', 'LIKE', '%'.$searchData.'%');
+                    })->get();
+        if (count($userData)) {
+            $results = $userData;
+        } else {
+            $results = $userTest;
+        }
+        return view('admin.result.list', compact('results'));
+     }
 }
