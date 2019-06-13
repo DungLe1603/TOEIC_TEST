@@ -30,7 +30,7 @@
                   <th>@lang('user.table.name')</th>
                   <th>@lang('user.table.birthday')</th>
                   <th>@lang('user.table.gender')</th>
-                  <th>@lang('user.status.title')</th>
+                  <th>@lang('user.table.role')</th>
                   <th style="width: 140px">@lang('user.table.action')</th>
                 </tr>
                 @foreach ($users as $user)
@@ -38,14 +38,9 @@
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->email ? $user->email : '-'}}</td>
                     <td>{{ $user->name }}</td>
-                    <td>{{ $user->birthday}}</td>
-                    {{-- <td>{{ $user->gender}}</td> --}}
+                    <td>{{ date('d-m-Y', strtotime($user->birthday))}}</td>
                     <td>{{ $user->gender == \App\Models\USER::MALE ? 'Male' : 'Female' }}</td>
-                    @if ($user->block_flag == 1)
-                      <td>@lang('user.status.block')</td>
-                    @else
-                      <td>@lang('user.status.active')</td>
-                    @endif                    
+                    <td>{{ $user->role->name }}</td>
                     <td>
                         <a class="btn btn-info btn-xs" href="{{ route('admin.users.edit', $user->id) }}">@lang('common.edit')</a>
                         <form class="form-inline" action="{{ route('admin.users.destroy', $user->id) }}" method="POST">

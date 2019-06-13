@@ -42,5 +42,6 @@ return [
         'update_profile_error' => 'Update profile failed!',
         'change_password_success' => 'Change password successfully!',
         'change_password_error' => 'Change password failed!',
+        'permission_denied' => 'Permission denied',
     ],
 ];

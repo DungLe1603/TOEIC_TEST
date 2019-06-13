@@ -36,6 +36,7 @@ Route::group(['namespace' => 'Auth'],  function () {
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Admin', 'as' => 'admin.'], function () {
+    Route::post('users/reset-password/{id}', 'UserController@resetPassword')->name('users.password.reset');
     Route::resource('users', 'UserController');
     Route::resource('parts', 'PartController');
     Route::get('tests/{id}/questions', 'QuestionController@index') -> name('test.questions');

@@ -9,6 +9,7 @@ use App\Models\Role;
 use App\Services\UserService;
 use App\Http\Requests\Admin\PostUserRequest;
 use App\Http\Requests\Admin\PutUserRequest;
+use App\Http\Requests\Admin\ResetPasswordRequest;
 
 class UserController extends Controller
 {
@@ -77,7 +78,7 @@ class UserController extends Controller
         if (\Auth::user()->id == $user->id ||  $user->role_id != \App\Models\Role::ADMIN_ROLE) {
             return view('admin.user.edit', compact('user', 'roles'));
         }
-        session()->flash('error', trans('user.edit_error'));
+        session()->flash('error', trans('common.message.permission_denied'));
         return redirect()->back();
     }
 
@@ -108,8 +109,24 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         if ($this->userService->destroy($user)) {
-            return redirect()->route('admin.users.index')->with('success', trans('common.message.block_success'));
+            return redirect()->route('admin.users.index')->with('success', trans('common.message.delete_success'));
         }
-        return redirect()->route('admin.users.index')->with('error', trans('common.message.block_error'));
+        return redirect()->route('admin.users.index');
+    }
+
+    /**
+     * Reset password
+     *
+     * @param int $id $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function resetPassword(ResetPasswordRequest $request, $id)
+    {
+        $user = User::findOrFail($id);
+        if ($user->update(['password' => bcrypt($request->password)])) {
+            return redirect()->route('admin.users.edit', $id)->with('success', trans('common.message.change_password_success'));
+        }
+        return redirect()->route('admin.users.edit', $id)->with('error', trans('common.message.change_password_error'));
     }
 }
