@@ -34,7 +34,7 @@
                       <div class="form-group">
                         <label for="picture">@lang('question.table.picture')</label>
                         <br>
-                        <img src="{{ $question->picture->path }}" height="300px" id="image-preview" class="question-img" alt="Question Image">
+                        <img id="imgBlah" src="{{ $question->picture->path }}" height="300px" class="question-img" alt="Question Image">
                         <input type="text" name="picture_id" value="{{ $question->picture_id }}" style="display: none;">
                         <input id="imgInp" type="file" name="picture" class="p-10" accept="image/gif, image/jpeg, image/png">
                       </div>
@@ -44,10 +44,10 @@
                         <label for="voice">@lang('question.table.voice')</label>   
                         <br>                     
                         <audio controls>
-                          <source src="{{ $question->voice['path'] }}">
+                          <source id="voiceBlah" src="{{ $question->voice['path'] }}">
                         </audio>
                         <input type="text" name="voice_id" value="{{ $question->voice_id }}" style="display: none;">
-                        <input id="imgInp" type="file" class="p-10" name="voice" accept=".mp3,audio/*">
+                        <input id="voiceInp" type="file" class="p-10" name="voice" accept=".mp3,audio/*">
                       </div>
                     @endif
                     <div class="form-group">
@@ -77,7 +77,7 @@
                     @if(isset($group->picture_id))                    
                       <div class="form-group">
                         <label for="picture">@lang('question.table.picture')</label>
-                        <img src="{{ $group->picture->path }}" id="image-preview" class="question-img" alt="Question Image">
+                        <img id="imgBlah" src="{{ $group->picture->path }}" class="question-img" alt="Question Image">
                         <input type="text" name="picture_id" value="{{ $group->picture_id }}" style="display: none;">
                         <input id="imgInp" type="file" name="picture" class="p-10" accept="image/gif, image/jpeg, image/png">
                       </div>
@@ -86,10 +86,10 @@
                       <div class="form-group">
                         <label for="voice">@lang('question.table.voice')</label>
                         <audio controls>
-                          <source src="{{ $group->voice['path'] }}">
+                          <source id="voiceBlah" src="{{ $group->voice['path'] }}">
                         </audio>
                         <input type="text" name="voice_id" value="{{ $group->voice_id }}" style="display: none;">
-                        <input id="imgInp" type="file" name="voice" class="p-10" accept=".mp3,audio/*">
+                        <input id="voiceInp" type="file" name="voice" class="p-10" accept=".mp3,audio/*">
                       </div>
                     @endif
                     @foreach ($group->questions as $key => $question)
@@ -124,4 +124,5 @@
     </section>
 	</div>
 	<script src="{!! asset('admin/js/create_question.js') !!}"></script>
+	<script src="{!! asset('admin/js/show-file.js') !!}"></script>
 @endsection
