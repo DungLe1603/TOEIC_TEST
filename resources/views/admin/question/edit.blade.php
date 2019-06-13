@@ -76,7 +76,7 @@
                     </div>
                     @if(isset($group->picture_id))                    
                       <div class="form-group">
-                        <label for="picture">@lang('question.table.picture')</label>
+                        <label for="picture">@lang('question.table.picture')</label><br>
                         <img id="imgBlah" src="{{ $group->picture->path }}" class="question-img" alt="Question Image">
                         <input type="text" name="picture_id" value="{{ $group->picture_id }}" style="display: none;">
                         <input id="imgInp" type="file" name="picture" class="p-10" accept="image/gif, image/jpeg, image/png">
@@ -84,7 +84,7 @@
                     @endif
                     @if(isset($group->voice_id))
                       <div class="form-group">
-                        <label for="voice">@lang('question.table.voice')</label>
+                        <label for="voice">@lang('question.table.voice')</label><br>
                         <audio controls>
                           <source id="voiceBlah" src="{{ $group->voice['path'] }}">
                         </audio>
